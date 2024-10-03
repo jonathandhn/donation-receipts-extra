@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<extension key="com.ixiam.modules.donrecextra" type="module">
+  <file>donrecextra</file>
+  <name>donrecextra</name>
+  <description>donrecextra</description>
+  <license>AGPL-3.0</license>
+  <maintainer>
+    <author>Ruben</author>
+    <email>r.pineda@ixiam.com</email>
+  </maintainer>
+  <releaseDate>2024-10-02</releaseDate>
+  <version>1.1.1</version>
+  <develStage>stable</develStage>
+  <compatibility>
+    <ver>5.69</ver>
+  </compatibility>
+  <comments>Extension to add custom developments</comments>
+  <civix>
+    <namespace>CRM/Donrecextra</namespace>
+    <format>23.02.1</format>
+  </civix>
+  <requires>
+    <ext>de.systopia.donrec</ext>
+  </requires>
+  <mixins>
+    <mixin>menu-xml@1.0.0</mixin>
+    <mixin>smarty-v2@1.0.1</mixin>
+  </mixins>
+  <classloader>
+    <psr0 prefix="CRM_" path="."/>
+    <psr4 prefix="Civi\" path="Civi"/>
+  </classloader>
+  <upgrader>CRM_Donrecextra_Upgrader</upgrader>
+</extension>
