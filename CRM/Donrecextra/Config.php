@@ -62,6 +62,7 @@ class CRM_Donrecextra_Config {
   }
 
   public static function getCustomFields($extends = NULL) {
+    $custom_fields = [];
     if (!$extends) {
       $extends = ["Contact", "Individual", "Organization", "Household"];
     }

@@ -8,8 +8,8 @@
     <author>Ruben</author>
     <email>r.pineda@ixiam.com</email>
   </maintainer>
-  <releaseDate>2024-10-02</releaseDate>
-  <version>1.1.1</version>
+  <releaseDate>2026-06-22</releaseDate>
+  <version>1.1.3</version>
   <develStage>stable</develStage>
   <compatibility>
     <ver>5.69</ver>
@@ -23,6 +23,7 @@
     <ext>de.systopia.donrec</ext>
   </requires>
   <mixins>
+    <mixin>scan-classes@1.0.0</mixin>
     <mixin>menu-xml@1.0.0</mixin>
     <mixin>smarty-v2@1.0.1</mixin>
   </mixins>

@@ -1,0 +1,7 @@
+[
+  {
+    "name": "donrecextra_generate_requested_receipt",
+    "label": "Generate Donrec receipt",
+    "class_name": "CRM_Donrecextra_Civirules_Action_GenerateRequestedReceipt"
+  }
+]

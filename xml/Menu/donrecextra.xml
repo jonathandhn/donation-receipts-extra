@@ -6,4 +6,22 @@
     <title>Config Donrec Extra</title>
     <access_arguments>administer CiviCRM</access_arguments>
   </item>
+  <item>
+    <path>civicrm/civirule/form/action/donrecextra/generate-receipt</path>
+    <page_callback>CRM_Donrecextra_Civirules_Form_GenerateRequestedReceipt</page_callback>
+    <title>Configure Donrec receipt generation</title>
+    <access_arguments>administer CiviCRM; administer CiviRules</access_arguments>
+  </item>
+  <item>
+    <path>civicrm/admin/donrecextra/audit</path>
+    <page_callback>CRM_Donrecextra_Form_Audit</page_callback>
+    <title>Donation receipt audit</title>
+    <access_arguments>administer CiviCRM</access_arguments>
+  </item>
+  <item>
+    <path>civicrm/donrecextra/receipt/download</path>
+    <page_callback>CRM_Donrecextra_Page_DownloadReceipt</page_callback>
+    <title>Download donation receipt</title>
+    <access_callback>1</access_callback>
+  </item>
 </menu>

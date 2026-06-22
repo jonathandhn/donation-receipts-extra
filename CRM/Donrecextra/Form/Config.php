@@ -15,6 +15,7 @@ class CRM_Donrecextra_Form_Config extends CRM_Core_Form {
     "donrecextra_extra_tokens_contact",
     "donrecextra_extra_tokens_address",
     "donrecextra_extra_tokens_contribution",
+    "donrecextra_enable_organization_receipts",
   ];
 
   public function buildQuickForm() {
@@ -30,6 +31,14 @@ class CRM_Donrecextra_Form_Config extends CRM_Core_Form {
     $this->addElement('checkbox', 'donrecextra_extra_tokens_contact', E::ts('Enable custom tokens Contact'));
     $this->addElement('checkbox', 'donrecextra_extra_tokens_address', E::ts('Enable custom tokens Address'));
     $this->addElement('checkbox', 'donrecextra_extra_tokens_contribution', E::ts('Enable custom tokens Contribution'));
+    $this->addElement(
+      'checkbox',
+      'donrecextra_enable_organization_receipts',
+      E::ts('Enable organization receipt fields')
+    );
+    $this->assign('organizationReceiptsDescription', E::ts(
+      'Creates the legal-information fields for organizations and exposes stable receipt tokens. Disabled by default.'
+    ));
 
     $this->addButtons([
       [
@@ -47,7 +56,10 @@ class CRM_Donrecextra_Form_Config extends CRM_Core_Form {
   public function postProcess() {
     $values_submit = [];
     foreach ($this->configuration_tokens as $value) {
-      $values_submit[$value] = $this->_submitValues[$value];
+      $values_submit[$value] = $this->_submitValues[$value] ?? 0;
+    }
+    if (!empty($values_submit['donrecextra_enable_organization_receipts'])) {
+      CRM_Donrecextra_OrganizationReceipt::ensureCustomFields();
     }
     Civi::settings()->set(E::SHORT_NAME, $values_submit);
     parent::postProcess();
@@ -55,9 +67,9 @@ class CRM_Donrecextra_Form_Config extends CRM_Core_Form {
 
   public function setDefaultValues() {
     $defaults = parent::setDefaultValues();
-    $values_config = Civi::settings()->get(E::SHORT_NAME);
+    $values_config = (array) Civi::settings()->get(E::SHORT_NAME);
     foreach ($this->configuration_tokens as $value) {
-      $defaults[$value] = $values_config[$value];
+      $defaults[$value] = $values_config[$value] ?? 0;
     }
     return $defaults;
   }

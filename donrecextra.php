@@ -20,6 +20,11 @@ function donrecextra_civicrm_config(&$config) {
  */
 function donrecextra_civicrm_install() {
   _donrecextra_civix_civicrm_install();
+  // Do not call APIs here. The module lifecycle invokes this hook before the
+  // upgrader has created our SQL tables. Registering the CiviRules action can
+  // rebuild the API4 entity cache, which would try to create the audit SQL
+  // view before its source tables exist. The enable hook runs immediately
+  // after the upgrader during a fresh installation and performs registration.
 }
 
 /**
@@ -29,6 +34,43 @@ function donrecextra_civicrm_install() {
  */
 function donrecextra_civicrm_enable() {
   _donrecextra_civix_civicrm_enable();
+  donrecextra_register_civirules_actions();
+}
+
+/**
+ * Register Donrec Extra actions when CiviRules is available.
+ */
+function donrecextra_register_civirules_actions() {
+  if (!class_exists('CRM_Civirules_Utils_Upgrader')) {
+    return;
+  }
+
+  $jsonFile = __DIR__ . DIRECTORY_SEPARATOR . 'civirules_actions.json';
+  if (is_readable($jsonFile)) {
+    try {
+      CRM_Civirules_Utils_Upgrader::insertActionsFromJson($jsonFile);
+    }
+    catch (Throwable $e) {
+      // CiviRules is an optional integration. A missing, disabled or partially
+      // upgraded CiviRules installation must never prevent Donrecextra itself
+      // from being installed or enabled.
+      Civi::log()->warning('Donrecextra skipped optional CiviRules action registration: {message}', [
+        'message' => $e->getMessage(),
+      ]);
+    }
+  }
+}
+
+/**
+ * Capture Donrec withdrawal lifecycle events around the API call.
+ */
+function donrecextra_civicrm_apiWrappers(&$wrappers, $apiRequest) {
+  if (
+    strtolower((string) ($apiRequest['entity'] ?? '')) === 'donationreceipt'
+    && strtolower((string) ($apiRequest['action'] ?? '')) === 'withdraw'
+  ) {
+    $wrappers[] = new CRM_Donrecextra_ApiWrapper_DonationReceiptWithdraw();
+  }
 }
 
 /**
@@ -38,26 +80,61 @@ function donrecextra_civicrm_enable() {
  * @return void
  */
 function donrecextra_civicrm_donationReceiptTokenValues(&$values) {
-  $values_config = Civi::settings()->get(E::SHORT_NAME);
-  if ($values_config['donrecextra_extra_tokens_contact'] == 1) {
+  // Donrec accesses every configured receipt token directly. Older releases
+  // do not use isset(), which produces PHP 8 warnings for optional fields.
+  // Supplying NULL defaults preserves Donrec's fallback behaviour while
+  // keeping headless and cron runs quiet.
+  $receiptFields = CRM_Donrec_DataStructure::getCustomFields('zwb_donation_receipt');
+  foreach (array_keys($receiptFields) as $tokenName) {
+    if (str_starts_with($tokenName, 'shipping_')) {
+      $addressToken = substr($tokenName, strlen('shipping_'));
+      $values['addressee'][$addressToken] = $values['addressee'][$addressToken] ?? NULL;
+    }
+    else {
+      if (!array_key_exists($tokenName, $values)) {
+        $values[$tokenName] = NULL;
+      }
+      if (!array_key_exists($tokenName, $values['contributor'])) {
+        $values['contributor'][$tokenName] = NULL;
+      }
+    }
+  }
+
+  $values_config = (array) Civi::settings()->get(E::SHORT_NAME);
+  $extraContactTokens = !empty($values_config['donrecextra_extra_tokens_contact']);
+  $organizationReceipts = !empty($values_config['donrecextra_enable_organization_receipts']);
+
+  if ($extraContactTokens || $organizationReceipts) {
     $config_donrec_extra = C::singleton()->getParams();
     $fields_to_return = ["legal_name", "first_name", "last_name", "state_province", "languages", "phone", "email", "prefix_id"];
-    foreach ($config_donrec_extra["customFieldsContact"] as $key_field => $value) {
-      $fields_to_return[] = $key_field;
+    if ($extraContactTokens) {
+      foreach (($config_donrec_extra["customFieldsContact"] ?? []) as $key_field => $value) {
+        $fields_to_return[] = $key_field;
+      }
     }
+
+    $organizationTokenFields = [];
+    if ($organizationReceipts) {
+      $organizationTokenFields = CRM_Donrecextra_OrganizationReceipt::ensureCustomFields();
+      $fields_to_return = array_merge($fields_to_return, array_keys($organizationTokenFields));
+    }
+    $fields_to_return = array_values(array_unique($fields_to_return));
 
     if (!empty($values["contributor"]["id"])) {
       $contact_extra = civicrm_api3('Contact', 'getSingle', ['id' => $values["contributor"]["id"], "return" => $fields_to_return]);
       $values["contributor"] = array_merge($contact_extra, $values["contributor"]);
       C::replace_option_values($values["contributor"]);
+      foreach ($organizationTokenFields as $customField => $tokenName) {
+        $values["contributor"][$tokenName] = $values["contributor"][$customField] ?? '';
+      }
     }
   }
 
-  if ($values_config['donrecextra_extra_tokens_address'] == 1) {
-    $values["address"] = C::lookupAddressExtend($values["contributor"]["id"], $values_config['donrecextra_location_type']);
+  if (!empty($values_config['donrecextra_extra_tokens_address'])) {
+    $values["address"] = C::lookupAddressExtend($values["contributor"]["id"], $values_config['donrecextra_location_type'] ?? 0);
   }
 
-  if ($values_config['donrecextra_extra_tokens_contribution'] == 1) {
+  if (!empty($values_config['donrecextra_extra_tokens_contribution'])) {
     foreach ($values["lines"] as $key => $value) {
       if (!empty($value["contribution_id"])) {
         $contribution = civicrm_api3('Contribution', 'getSingle', ['id' => $value["contribution_id"]]);
@@ -73,6 +150,14 @@ function donrecextra_civicrm_navigationMenu(&$menu) {
     'label' => E::ts('DonRec Extra Configuration'),
     'url' => 'civicrm/admin/donrecextra',
     'name' => 'donrecextra_admin_config',
+    'permission' => 'administer CiviCRM',
+    'operator' => NULL,
+    'separator' => 0,
+  ]);
+  _donrecextra_civix_insert_navigation_menu($menu, 'Contributions', [
+    'label' => E::ts('Donation receipt audit'),
+    'url' => 'civicrm/admin/donrecextra/audit?reset=1',
+    'name' => 'donrecextra_receipt_audit',
     'permission' => 'administer CiviCRM',
     'operator' => NULL,
     'separator' => 0,
