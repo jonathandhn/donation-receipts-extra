@@ -104,6 +104,85 @@ Run or schedule a full reconciliation with:
 cv api4 DonationReceiptAudit.reconcile
 ```
 
+### Verifying receipt and report integrity
+
+The audit ledger stores two independent SHA-256 checksums which answer two
+different questions. Neither checksum is a digital signature or a replacement
+for a retention policy; it is an integrity control which must be checked
+against the stored value.
+
+#### 1. Verify a receipt PDF
+
+`DonrecextraReceiptAudit.pdf_sha256` is the SHA-256 checksum of the original
+receipt PDF. To verify it, load the audit record, resolve `original_file_id`
+through CiviCRM (do not assume that `civicrm_file.uri` is an absolute path),
+and compare the stored checksum with a newly calculated checksum:
+
+```php
+$audit = \Civi\Api4\DonrecextraReceiptAudit::get(FALSE)
+  ->addSelect('original_file_id', 'pdf_sha256')
+  ->addWhere('id', '=', $auditId)
+  ->execute()
+  ->single();
+
+[$path] = CRM_Core_BAO_File::path((int) $audit['original_file_id']);
+$actual = hash_file('sha256', $path);
+
+if (!hash_equals((string) $audit['pdf_sha256'], $actual)) {
+  throw new RuntimeException('The stored receipt PDF does not match its audit checksum.');
+}
+```
+
+A match proves that the bytes of the accessible PDF are the same bytes which
+were hashed by the audit ledger. A mismatch means that the file is missing,
+has changed, or that the ledger was populated before the final file was
+available; investigate it without replacing the historical checksum.
+
+#### 2. Verify a frozen audit report
+
+When **Freeze this report when applying** is selected, the extension stores the
+complete report JSON and `selection_hash` in `DonationReceiptAuditReport`.
+`selection_hash` is the SHA-256 checksum of the ordered receipt/contribution
+selection used for the report: audit receipt ID, receipt number, contribution
+ID, contribution date, amount and status at the selected cutoff.
+
+To verify a frozen report, load its stored parameters and recompute the report
+with the exact same period, cutoff, granularity and date basis. Compare the
+stored and recalculated hashes with `hash_equals()`:
+
+```php
+$snapshot = \Civi\Api4\DonationReceiptAuditReport::get(FALSE)
+  ->addSelect('period_from', 'period_to', 'as_of', 'granularity', 'metrics_json', 'selection_hash')
+  ->addWhere('id', '=', $snapshotId)
+  ->execute()
+  ->single();
+
+$storedReport = json_decode($snapshot['metrics_json'], TRUE, 512, JSON_THROW_ON_ERROR);
+$liveReport = (new CRM_Donrecextra_AuditReport())->calculate(
+  $snapshot['period_from'],
+  $snapshot['period_to'],
+  $snapshot['as_of'],
+  $snapshot['granularity'],
+  $storedReport['date_basis']
+);
+
+if (!hash_equals((string) $snapshot['selection_hash'], $liveReport['selection_hash'])) {
+  throw new RuntimeException('The current ledger selection differs from the frozen report.');
+}
+```
+
+A match proves that the current audit ledger produces the same selected lines
+and lifecycle status for that cutoff. A mismatch is not automatically proof of
+tampering: it can result from a later reconciliation, a corrected withdrawal,
+or an audit-ledger repair. Preserve the frozen JSON, investigate the relevant
+receipt/event records, and create a new report instead of overwriting the old
+snapshot.
+
+The report selection hash does not currently include each receipt's
+`pdf_sha256`, and receipt events are not hash-chained or digitally signed.
+For a stronger legal archive, store the frozen report as a PDF, hash that PDF,
+and retain it in immutable object storage together with the ledger snapshot.
+
 
 * Example for contributions details
 
