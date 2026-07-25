@@ -44,21 +44,21 @@ class DonationReceipt extends Generic\SqlView {
       self::originalField('receipt.entity_id', 'contact_id', 'Contact.id'),
       self::field(self::column('receipt', $receiptFields, 'receipt_id'), 'receipt_id', 'String', E::ts('Receipt number')),
       self::field(self::column('receipt', $receiptFields, 'status'), 'status', 'String', E::ts('Status')),
-      self::field(self::column('receipt', $receiptFields, 'type'), 'type', 'String', E::ts('Type')),
-      self::field(self::column('receipt', $receiptFields, 'issued_on'), 'issued_on', 'Timestamp', E::ts('Issued on')),
-      self::originalField(self::column('receipt', $receiptFields, 'issued_by'), 'issued_by', 'Contact.id'),
-      self::originalField(self::column('receipt', $receiptFields, 'original_file'), 'original_file_id', 'File.id'),
+      self::field(self::optionalColumn('receipt', $receiptFields, 'type'), 'type', 'String', E::ts('Type')),
+      self::field(self::optionalColumn('receipt', $receiptFields, 'issued_on'), 'issued_on', 'Timestamp', E::ts('Issued on')),
+      self::originalField(self::optionalColumn('receipt', $receiptFields, 'issued_by'), 'issued_by', 'Contact.id'),
+      self::originalField(self::optionalColumn('receipt', $receiptFields, 'original_file'), 'original_file_id', 'File.id'),
       self::originalField('receipt_file.uri', 'file_uri', 'File.uri'),
       self::originalField('receipt_file.mime_type', 'file_mime_type', 'File.mime_type'),
-      self::field(self::column('receipt', $receiptFields, 'date_from'), 'date_from', 'Timestamp', E::ts('Period start')),
-      self::field(self::column('receipt', $receiptFields, 'date_to'), 'date_to', 'Timestamp', E::ts('Period end')),
-      self::field(self::column('receipt', $receiptFields, 'profile_id'), 'profile_id', 'Integer', E::ts('Donrec profile ID')),
-      self::field(self::column('receipt', $receiptFields, 'exporters'), 'exporters', 'String', E::ts('Exporters')),
-      self::field(self::column('receipt', $receiptFields, 'display_name'), 'display_name', 'String', E::ts('Recipient name')),
-      self::field(self::column('receipt', $receiptFields, 'street_address'), 'street_address', 'String', E::ts('Recipient street address')),
-      self::field(self::column('receipt', $receiptFields, 'postal_code'), 'postal_code', 'String', E::ts('Recipient postal code')),
-      self::field(self::column('receipt', $receiptFields, 'city'), 'city', 'String', E::ts('Recipient city')),
-      self::field(self::column('receipt', $receiptFields, 'country'), 'country', 'String', E::ts('Recipient country')),
+      self::field(self::optionalColumn('receipt', $receiptFields, 'date_from'), 'date_from', 'Timestamp', E::ts('Period start')),
+      self::field(self::optionalColumn('receipt', $receiptFields, 'date_to'), 'date_to', 'Timestamp', E::ts('Period end')),
+      self::field(self::optionalColumn('receipt', $receiptFields, 'profile_id'), 'profile_id', 'Integer', E::ts('Donrec profile ID')),
+      self::field(self::optionalColumn('receipt', $receiptFields, 'exporters'), 'exporters', 'String', E::ts('Exporters')),
+      self::field(self::optionalColumn('receipt', $receiptFields, 'display_name'), 'display_name', 'String', E::ts('Recipient name')),
+      self::field(self::optionalColumn('receipt', $receiptFields, 'street_address'), 'street_address', 'String', E::ts('Recipient street address')),
+      self::field(self::optionalColumn('receipt', $receiptFields, 'postal_code'), 'postal_code', 'String', E::ts('Recipient postal code')),
+      self::field(self::optionalColumn('receipt', $receiptFields, 'city'), 'city', 'String', E::ts('Recipient city')),
+      self::field(self::optionalColumn('receipt', $receiptFields, 'country'), 'country', 'String', E::ts('Recipient country')),
       self::field('items.item_count', 'item_count', 'Integer', E::ts('Receipt item count')),
       self::field('items.contribution_count', 'contribution_count', 'Integer', E::ts('Contribution count')),
       self::field('items.total_amount', 'total_amount', 'Money', E::ts('Total amount')),
@@ -103,7 +103,7 @@ class DonationReceipt extends Generic\SqlView {
           GROUP BY `%s`
        ) items ON items.receipt_record_id = receipt.id',
       self::identifier($receiptTable),
-      self::column('receipt', $receiptFields, 'original_file'),
+      self::optionalColumn('receipt', $receiptFields, 'original_file', '0'),
       $issuedIn,
       $totalAmount,
       $nonDeductible,
@@ -135,6 +135,13 @@ class DonationReceipt extends Generic\SqlView {
   private static function column(string $alias, array $fields, string $name): string {
     if (empty($fields[$name])) {
       throw new \CRM_Core_Exception("Missing Donrec field: $name");
+    }
+    return $alias . '.`' . self::identifier($fields[$name]) . '`';
+  }
+
+  private static function optionalColumn(string $alias, array $fields, string $name, string $fallback = 'NULL'): string {
+    if (empty($fields[$name])) {
+      return $fallback;
     }
     return $alias . '.`' . self::identifier($fields[$name]) . '`';
   }

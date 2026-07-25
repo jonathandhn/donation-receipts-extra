@@ -1,11 +1,14 @@
 # Donor Receipt Extras
 
-This extension extends functionality provideed by [de.systopia.donrec](https://github.com/systopia/de.systopia.donrec)
+This extension extends the functionality provided by [de.systopia.donrec](https://github.com/systopia/de.systopia.donrec).
+
+Originally developed by iXiam Global Solutions, the extension is now developed
+and maintained by Jonathan Dahan.
 
 ## Requirements
 
 * PHP 8.1
-* CiviCRM 5.69
+* CiviCRM 6.14.0 or later
 
 ## Configuration
 

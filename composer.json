@@ -1,12 +1,18 @@
 {
     "name": "civicrm/donrecextra",
-    "description": "Extension to add custom developments",
+    "description": "Extends Donrec with portable tokens, headless generation, CiviRules automation, and receipt auditing.",
     "type": "civicrm-extension",
     "license": "AGPL-3.0-only",
     "authors": [
       {
+        "name": "Jonathan Dahan",
+        "email": "jonathan@dhn.one",
+        "role": "Maintainer"
+      },
+      {
         "name": "iXiam Global Solutions",
-        "email": "info@ixiam.com"
+        "email": "info@ixiam.com",
+        "role": "Original developer"
       }
     ]
 }
