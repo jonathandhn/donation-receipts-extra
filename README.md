@@ -1,6 +1,7 @@
-# Donor Receipt Extras
+# Donation Receipts Extra
 
-This extension extends the functionality provided by [de.systopia.donrec](https://github.com/systopia/de.systopia.donrec).
+This extension extends the functionality provided by
+[Donation Receipts](https://github.com/systopia/de.systopia.donrec).
 
 Originally developed by iXiam Global Solutions, the extension is now developed
 and maintained by Jonathan Dahan.

@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <extension key="com.ixiam.modules.donrecextra" type="module">
   <file>donrecextra</file>
-  <name>Donor Receipt Extras</name>
-  <description>Extends Donrec with portable tokens, headless generation, CiviRules automation, and receipt auditing.</description>
+  <name>Donation Receipts Extra</name>
+  <description>Extends Donation Receipts with portable tokens, headless generation, CiviRules automation, and receipt auditing.</description>
   <license>AGPL-3.0</license>
   <maintainer>
     <author>Jonathan Dahan</author>

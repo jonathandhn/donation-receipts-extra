@@ -1,6 +1,6 @@
 {
     "name": "civicrm/donrecextra",
-    "description": "Extends Donrec with portable tokens, headless generation, CiviRules automation, and receipt auditing.",
+    "description": "Extends Donation Receipts with portable tokens, headless generation, CiviRules automation, and receipt auditing.",
     "type": "civicrm-extension",
     "license": "AGPL-3.0-only",
     "authors": [
