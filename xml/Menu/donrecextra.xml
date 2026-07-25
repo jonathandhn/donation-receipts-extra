@@ -24,4 +24,10 @@
     <title>Download donation receipt</title>
     <access_callback>1</access_callback>
   </item>
+  <item>
+    <path>civicrm/donrecextra/receipt/issue</path>
+    <page_callback>CRM_Donrecextra_Form_IssueReceipt</page_callback>
+    <title>Issue donation receipt</title>
+    <access_arguments>create and withdraw receipts</access_arguments>
+  </item>
 </menu>

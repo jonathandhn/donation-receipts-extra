@@ -18,6 +18,9 @@ class CRM_Donrecextra_Form_Config extends CRM_Core_Form {
     "donrecextra_enable_organization_receipts",
   ];
 
+  /** @var array<int, string> */
+  private array $profileRequirementFields = [];
+
   public function buildQuickForm() {
     // add form elements
     $this->add(
@@ -40,6 +43,24 @@ class CRM_Donrecextra_Form_Config extends CRM_Core_Form {
       'Creates the legal-information fields for organizations and exposes stable receipt tokens. Disabled by default.'
     ));
 
+    foreach (CRM_Donrec_Logic_Profile::getAllActiveNames('is_default', 'DESC') as $profileId => $profileName) {
+      $fieldName = 'donrecextra_required_tokens_profile_' . $profileId;
+      $this->profileRequirementFields[(int) $profileId] = $fieldName;
+      $this->add('select', $fieldName, E::ts('Required receipt data — %1', [1 => $profileName]),
+        CRM_Donrecextra_ReceiptDataValidator::getTokenOptions(), FALSE, [
+          'multiple' => 'multiple',
+          'class' => 'crm-select2 huge',
+        ]);
+    }
+    $requiredReceiptDataDescription = E::ts(
+      'Choose the receipt tokens which must contain a value before a receipt using this Donrec profile can be issued. The check applies to the one-contribution form, CiviRules and API generation.'
+    );
+    $this->assign('requiredReceiptDataDescription', $requiredReceiptDataDescription);
+    $this->assign('profileRequirementDescriptions', array_fill_keys(
+      array_values($this->profileRequirementFields),
+      $requiredReceiptDataDescription
+    ));
+
     $this->addButtons([
       [
         'type' => 'submit',
@@ -54,10 +75,16 @@ class CRM_Donrecextra_Form_Config extends CRM_Core_Form {
   }
 
   public function postProcess() {
-    $values_submit = [];
+    $settings = (array) Civi::settings()->get(E::SHORT_NAME);
+    $values_submit = $settings;
     foreach ($this->configuration_tokens as $value) {
       $values_submit[$value] = $this->_submitValues[$value] ?? 0;
     }
+    $requirements = (array) ($settings['donrecextra_required_tokens_by_profile'] ?? []);
+    foreach ($this->profileRequirementFields as $profileId => $fieldName) {
+      $requirements[$profileId] = array_values(array_filter((array) ($this->_submitValues[$fieldName] ?? [])));
+    }
+    $values_submit['donrecextra_required_tokens_by_profile'] = $requirements;
     if (!empty($values_submit['donrecextra_enable_organization_receipts'])) {
       CRM_Donrecextra_OrganizationReceipt::ensureCustomFields();
     }
@@ -70,6 +97,9 @@ class CRM_Donrecextra_Form_Config extends CRM_Core_Form {
     $values_config = (array) Civi::settings()->get(E::SHORT_NAME);
     foreach ($this->configuration_tokens as $value) {
       $defaults[$value] = $values_config[$value] ?? 0;
+    }
+    foreach ($this->profileRequirementFields as $profileId => $fieldName) {
+      $defaults[$fieldName] = $values_config['donrecextra_required_tokens_by_profile'][$profileId] ?? [];
     }
     return $defaults;
   }

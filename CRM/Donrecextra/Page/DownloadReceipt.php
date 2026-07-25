@@ -3,6 +3,7 @@
 use Civi\Api4\DonationReceiptItem;
 use Civi\Api4\Contribution;
 use Civi\Api4\DonationReceipt;
+use CRM_Donrecextra_ExtensionUtil as E;
 
 class CRM_Donrecextra_Page_DownloadReceipt extends CRM_Core_Page {
 
@@ -18,7 +19,7 @@ class CRM_Donrecextra_Page_DownloadReceipt extends CRM_Core_Page {
       ->first();
 
     if (!$contribution) {
-      throw new CRM_Core_Exception(ts('Invalid contribution receipt request.'), 403);
+      throw new CRM_Core_Exception(E::ts('Invalid contribution receipt request.'), 403);
     }
 
     $contributionContactId = (int) $contribution['contact_id'];
@@ -30,11 +31,11 @@ class CRM_Donrecextra_Page_DownloadReceipt extends CRM_Core_Page {
     }
 
     if ($contributionContactId !== $contactId) {
-      throw new CRM_Core_Exception(ts('Invalid contribution receipt request.'), 403);
+      throw new CRM_Core_Exception(E::ts('Invalid contribution receipt request.'), 403);
     }
 
     if (!CRM_Contact_BAO_Contact_Permission::allow($contactId, CRM_Core_Permission::VIEW)) {
-      throw new CRM_Core_Exception(ts('You do not have permission to access this donation receipt.'), 403);
+      throw new CRM_Core_Exception(E::ts('You do not have permission to access this donation receipt.'), 403);
     }
 
     $receipt = DonationReceiptItem::get(FALSE)
@@ -70,8 +71,8 @@ class CRM_Donrecextra_Page_DownloadReceipt extends CRM_Core_Page {
 
     if (!$receipt) {
       CRM_Core_Session::setStatus(
-        ts('No donation receipt file is available for this contribution.'),
-        ts('Donation receipt unavailable'),
+        E::ts('No donation receipt file is available for this contribution.'),
+        E::ts('Donation receipt unavailable'),
         'warning'
       );
       CRM_Utils_System::redirect(CRM_Utils_System::url('civicrm/contribute/transact', [

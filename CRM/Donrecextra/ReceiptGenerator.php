@@ -95,6 +95,11 @@ class CRM_Donrecextra_ReceiptGenerator {
       $selectedContributionIds = $this->getSnapshotContributionIds($snapshotId);
       $statistics = CRM_Donrec_Logic_Snapshot::getStatistic($snapshotId);
 
+      // Validate the explicitly selected data before either a preview or a
+      // real issue. This single enforcement point covers API, CiviRules and
+      // the one-contribution form.
+      (new CRM_Donrecextra_ReceiptDataValidator())->assertValid($profile, $selectedContributionIds);
+
       if ($dryRun) {
         $snapshot->delete();
         $snapshot = NULL;

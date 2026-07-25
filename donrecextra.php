@@ -74,6 +74,68 @@ function donrecextra_civicrm_apiWrappers(&$wrappers, $apiRequest) {
 }
 
 /**
+ * Add a one-contribution receipt action to the native contribution selector.
+ *
+ * This is deliberately a link on each classic CiviCRM contribution row rather
+ * than a bulk SearchKit action. The linked form re-reads the contribution and
+ * issues a receipt with an explicit contribution ID, so a Donrec daily date
+ * boundary can never absorb another payment.
+ *
+ * @param string $objectName
+ * @param array $headers
+ * @param array $values
+ * @param array|object|null $selector
+ */
+function donrecextra_civicrm_searchColumns(
+  string $objectName,
+  array &$headers,
+  array &$values,
+  array|object|null &$selector
+): void {
+  if ($objectName !== 'contribution' || !CRM_Core_Permission::check('create and withdraw receipts')) {
+    return;
+  }
+
+  foreach ($values as $rowNumber => $row) {
+    $contributionId = (int) ($row['contribution_id'] ?? $row['id'] ?? 0);
+    $contactId = (int) ($row['contact_id'] ?? 0);
+    if (!$contributionId || !$contactId || empty($row['action'])) {
+      continue;
+    }
+
+    // Donrec's exact receipt-item check is the authoritative duplicate guard.
+    // The form performs the same check again before issuing.
+    if (CRM_Donrec_Logic_ReceiptItem::hasValidReceiptItem($contributionId, TRUE) !== FALSE) {
+      continue;
+    }
+
+    $title = E::ts('Issue a receipt for this contribution');
+    $url = CRM_Utils_System::url('civicrm/donrecextra/receipt/issue', [
+      'reset' => 1,
+      'id' => $contributionId,
+      'cid' => $contactId,
+    ], htmlize: FALSE);
+    $link = sprintf(
+      '<a href="%s" class="crm-hover-button" title="%s">%s</a>',
+      htmlspecialchars($url, ENT_QUOTES, 'UTF-8'),
+      htmlspecialchars($title, ENT_QUOTES, 'UTF-8'),
+      htmlspecialchars(E::ts('Issue receipt'), ENT_QUOTES, 'UTF-8')
+    );
+
+    if (str_contains($row['action'], '</ul></span>')) {
+      $values[$rowNumber]['action'] = str_replace(
+        '</ul></span>',
+        '<li>' . $link . '</li></ul></span>',
+        $row['action']
+      );
+    }
+    else {
+      $values[$rowNumber]['action'] = str_replace('</span>', $link . '</span>', $row['action']);
+    }
+  }
+}
+
+/**
  * Define hook_civicrm_donationReceiptTokenValues
  *
  * @param array $values
@@ -106,7 +168,7 @@ function donrecextra_civicrm_donationReceiptTokenValues(&$values) {
 
   if ($extraContactTokens || $organizationReceipts) {
     $config_donrec_extra = C::singleton()->getParams();
-    $fields_to_return = ["legal_name", "first_name", "last_name", "state_province", "languages", "phone", "email", "prefix_id"];
+    $fields_to_return = ["legal_name", "first_name", "last_name", "organization_name", "state_province", "languages", "phone", "email", "prefix_id"];
     if ($extraContactTokens) {
       foreach (($config_donrec_extra["customFieldsContact"] ?? []) as $key_field => $value) {
         $fields_to_return[] = $key_field;
