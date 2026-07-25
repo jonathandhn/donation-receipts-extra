@@ -17,7 +17,7 @@
   <comments>Originally developed by iXiam Global Solutions. Currently developed and maintained by Jonathan Dahan.</comments>
   <civix>
     <namespace>CRM/Donrecextra</namespace>
-    <format>23.02.1</format>
+    <format>25.10.2</format>
   </civix>
   <requires>
     <ext>de.systopia.donrec</ext>
@@ -25,11 +25,12 @@
   <mixins>
     <mixin>scan-classes@1.0.0</mixin>
     <mixin>menu-xml@1.0.0</mixin>
-    <mixin>smarty-v2@1.0.1</mixin>
+    <mixin>smarty@1.0.3</mixin>
+    <mixin>entity-types-php@2.0.0</mixin>
   </mixins>
   <classloader>
     <psr0 prefix="CRM_" path="."/>
     <psr4 prefix="Civi\" path="Civi"/>
   </classloader>
-  <upgrader>CRM_Donrecextra_Upgrader</upgrader>
+  <upgrader>CiviMix\Schema\Donrecextra\AutomaticUpgrader</upgrader>
 </extension>

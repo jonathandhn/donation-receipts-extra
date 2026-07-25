@@ -6,16 +6,6 @@ use CRM_Donrecextra_ExtensionUtil as E;
  */
 class CRM_Donrecextra_Upgrader extends CRM_Extension_Upgrader_Base {
 
-  public function install() {
-    $this->executeSqlFile('sql/auto_install.sql');
-    return TRUE;
-  }
-
-  public function uninstall() {
-    $this->executeSqlFile('sql/auto_uninstall.sql');
-    return TRUE;
-  }
-
   public function upgrade_4200() {
     $this->ctx->log->info('Applying update 4200');
     CRM_Core_DAO::executeQuery('DELETE FROM civicrm_setting WHERE name LIKE "%donrecextra_%"');
