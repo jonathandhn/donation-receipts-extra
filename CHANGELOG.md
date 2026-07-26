@@ -2,6 +2,29 @@
 
 All notable changes to Donation Receipts Extra are documented in this file.
 
+## 1.3.0 — 2026-07-26
+
+### Added
+
+* Durable receipt campaigns backed by CiviCRM SQL queues and UserJobs. A
+  campaign can be created from explicit contribution IDs, contact IDs with an
+  immutable period, or a saved SearchKit search returning Contacts or
+  Contributions.
+* `DonationReceipt.queue` and `DonationReceipt.queueStatus` API4 actions for
+  queue creation and operational status without the Donrec GUI.
+* A campaign screen with profile/exporter selection, preview mode, recent-job
+  counters, blocking errors and bounded manual resume.
+* Reproducible CV worker support through `Queue.run`. The queue retains failed
+  work for retry and removes completed work, preventing reissuance on resume.
+
+### Changed
+
+* Donation Receipts Extra configuration is now located beside Donrec's own
+  settings and profiles. Audit and campaign operations are exposed in the
+  Contributions menu.
+* The README now documents SQL queue storage, lifecycle states, saved-search
+  snapshots, bounded CV execution and a single-worker `flock` cron pattern.
+
 ## 1.2.0 — 2026-07-25
 
 ### Added
@@ -61,4 +84,3 @@ All notable changes to Donation Receipts Extra are documented in this file.
 ## 1.1.3 — 2026-06-22
 
 * Imported the preceding DonrecExtra 1.1.3 codebase.
-
