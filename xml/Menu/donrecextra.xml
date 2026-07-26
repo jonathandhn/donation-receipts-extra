@@ -5,6 +5,9 @@
     <page_callback>CRM_Donrecextra_Form_Config</page_callback>
     <title>Config Donrec Extra</title>
     <access_arguments>administer CiviCRM</access_arguments>
+    <adminGroup>CiviContribute</adminGroup>
+    <component>CiviContribute</component>
+    <weight>1001</weight>
   </item>
   <item>
     <path>civicrm/civirule/form/action/donrecextra/generate-receipt</path>
@@ -17,6 +20,18 @@
     <page_callback>CRM_Donrecextra_Form_Audit</page_callback>
     <title>Donation receipt audit</title>
     <access_arguments>administer CiviCRM</access_arguments>
+    <adminGroup>CiviContribute</adminGroup>
+    <component>CiviContribute</component>
+    <weight>1002</weight>
+  </item>
+  <item>
+    <path>civicrm/admin/donrecextra/queue</path>
+    <page_callback>CRM_Donrecextra_Form_Queue</page_callback>
+    <title>Donation receipt campaigns</title>
+    <access_arguments>create and withdraw receipts</access_arguments>
+    <adminGroup>CiviContribute</adminGroup>
+    <component>CiviContribute</component>
+    <weight>1003</weight>
   </item>
   <item>
     <path>civicrm/donrecextra/receipt/download</path>

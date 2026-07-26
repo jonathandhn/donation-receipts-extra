@@ -26,6 +26,8 @@ class DonationReceipt extends Generic\SqlView {
     return [
       'default' => ['access CiviContribute'],
       'generate' => ['create and withdraw receipts'],
+      'queue' => ['create and withdraw receipts'],
+      'queueStatus' => ['create and withdraw receipts'],
     ];
   }
 

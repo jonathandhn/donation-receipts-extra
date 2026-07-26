@@ -136,6 +136,87 @@ function donrecextra_civicrm_searchColumns(
 }
 
 /**
+ * Add the same one-contribution receipt action to the native contribution
+ * detail form. The form button only redirects: CRM_Donrecextra_Form_IssueReceipt
+ * re-loads the contribution and owns all validation and issuing logic.
+ *
+ * @param string $formName
+ * @param CRM_Core_Form $form
+ */
+function donrecextra_civicrm_buildForm(string $formName, CRM_Core_Form &$form): void {
+  if (
+    !is_a($form, 'CRM_Contribute_Form_ContributionView')
+    || !CRM_Core_Permission::check('create and withdraw receipts')
+  ) {
+    return;
+  }
+
+  $contributionId = (int) $form->get('id');
+  if (!$contributionId || CRM_Donrec_Logic_ReceiptItem::hasValidReceiptItem($contributionId, TRUE) !== FALSE) {
+    return;
+  }
+
+  // ContributionView normally has only the Done button. Preserve it when
+  // adding the issue button, as addButtons() replaces the button definition.
+  $form->addButtons([
+    [
+      'type' => 'cancel',
+      'name' => E::ts('Done'),
+      'spacing' => '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
+      'isDefault' => TRUE,
+    ],
+    [
+      'type' => 'submit',
+      'subName' => 'issue_donrecextra_receipt',
+      'name' => E::ts('Issue receipt'),
+      'isDefault' => FALSE,
+      'icon' => 'fa-file-text-o',
+    ],
+  ]);
+}
+
+/**
+ * Redirect the native contribution detail button to the shared issue form.
+ *
+ * @param string $formName
+ * @param CRM_Core_Form $form
+ */
+function donrecextra_civicrm_postProcess(string $formName, CRM_Core_Form &$form): void {
+  if (!is_a($form, 'CRM_Contribute_Form_ContributionView')) {
+    return;
+  }
+
+  if ($form->controller->getButtonName() !== '_qf_ContributionView_submit_issue_donrecextra_receipt') {
+    return;
+  }
+
+  $contributionId = (int) $form->get('id');
+  $contactId = (int) $form->get('cid');
+  if (!$contributionId || !$contactId) {
+    return;
+  }
+
+  // Keep the contribution screen as the return location for Cancel and for
+  // any validation error on the issuing form.
+  CRM_Core_Session::singleton()->pushUserContext(CRM_Utils_System::url(
+    'civicrm/contact/view/contribution',
+    [
+      'reset' => 1,
+      'id' => $contributionId,
+      'cid' => $contactId,
+      'action' => 'view',
+      'context' => 'dashboard',
+      'selectedChild' => 'contribute',
+    ]
+  ));
+  CRM_Utils_System::redirect(CRM_Utils_System::url('civicrm/donrecextra/receipt/issue', [
+    'reset' => 1,
+    'id' => $contributionId,
+    'cid' => $contactId,
+  ]));
+}
+
+/**
  * Define hook_civicrm_donationReceiptTokenValues
  *
  * @param array $values
@@ -208,13 +289,14 @@ function donrecextra_civicrm_donationReceiptTokenValues(&$values) {
 }
 
 function donrecextra_civicrm_navigationMenu(&$menu) {
-  _donrecextra_civix_insert_navigation_menu($menu, 'Administer', [
+  _donrecextra_civix_insert_navigation_menu($menu, 'Administer/CiviContribute/donrec', [
     'label' => E::ts('DonRec Extra Configuration'),
     'url' => 'civicrm/admin/donrecextra',
     'name' => 'donrecextra_admin_config',
     'permission' => 'administer CiviCRM',
     'operator' => NULL,
     'separator' => 0,
+    'weight' => 3,
   ]);
   _donrecextra_civix_insert_navigation_menu($menu, 'Contributions', [
     'label' => E::ts('Donation receipt audit'),
@@ -223,5 +305,15 @@ function donrecextra_civicrm_navigationMenu(&$menu) {
     'permission' => 'administer CiviCRM',
     'operator' => NULL,
     'separator' => 0,
+    'weight' => 1002,
+  ]);
+  _donrecextra_civix_insert_navigation_menu($menu, 'Contributions', [
+    'label' => E::ts('Donation receipt campaigns'),
+    'url' => 'civicrm/admin/donrecextra/queue?reset=1',
+    'name' => 'donrecextra_receipt_campaigns',
+    'permission' => 'create and withdraw receipts',
+    'operator' => NULL,
+    'separator' => 0,
+    'weight' => 1003,
   ]);
 }
