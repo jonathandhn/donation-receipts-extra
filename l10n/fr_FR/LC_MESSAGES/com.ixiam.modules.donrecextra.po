@@ -58,7 +58,7 @@ msgid "- Select a saved search -"
 msgstr "- Sélectionner une recherche enregistrée -"
 
 msgid "A donation receipt was issued for contribution #%1."
-msgstr "Un reçu de don a été émis pour la contribution n°%1."
+msgstr "Un reçu fiscal a été émis pour la contribution n°%1."
 
 msgid "A period is required for contact selection."
 msgstr "Une période est requise pour la sélection par contact."
@@ -79,10 +79,10 @@ msgid "Amount issued"
 msgstr "Montant émis"
 
 msgid "Amount withdrawn"
-msgstr "Montant retiré"
+msgstr "Montant annulé/retiré"
 
 msgid "An original donation receipt already exists for this contribution."
-msgstr "Un reçu de don original existe déjà pour cette contribution."
+msgstr "Un reçu fiscal original existe déjà pour cette contribution."
 
 msgid "Apply"
 msgstr "Appliquer"
@@ -103,7 +103,7 @@ msgid "At least one selected contribution no longer exists."
 msgstr "Au moins une contribution sélectionnée n'existe plus."
 
 msgid "Audit receipt ID"
-msgstr "ID d'audit du reçu"
+msgstr "ID d'audit du reçu fiscal"
 
 msgid "Audit report frozen"
 msgstr "Rapport d'audit gelé"
@@ -151,7 +151,7 @@ msgid "Choose an existing campaign to run."
 msgstr "Choisissez une campagne existante à exécuter."
 
 msgid "Choose the receipt tokens which must contain a value before a receipt using this Donrec profile can be issued. The check applies to the one-contribution form, CiviRules and API generation."
-msgstr "Choisissez les tokens de reçu qui doivent contenir une valeur avant qu'un reçu utilisant ce profil Donrec puisse être émis. La vérification s'applique au formulaire à contribution unique, à CiviRules et à la génération par API."
+msgstr "Choisissez les tokens de reçu qui doivent contenir une valeur avant qu'un reçu utilisant ce modèle de reçu fiscal puisse être émis. La vérification s'applique au formulaire à contribution unique, à CiviRules et à la génération par API."
 
 msgid "Contact %1 is neither an Individual nor an Organization."
 msgstr "Le contact %1 n'est ni un individu ni une organisation."
@@ -181,7 +181,7 @@ msgid "Contribution IDs"
 msgstr "IDs des contributions"
 
 msgid "Contribution allocations recorded on donation receipt audits."
-msgstr "Allocations de contribution enregistrées sur les audits de reçus de dons."
+msgstr "Allocations de contribution enregistrées sur les audits de reçus fiscaux."
 
 msgid "Contribution amount"
 msgstr "Montant de la contribution"
@@ -205,7 +205,7 @@ msgid "Contributions on valid receipts"
 msgstr "Contributions sur reçus valides"
 
 msgid "Contributions on withdrawn receipts"
-msgstr "Contributions sur reçus retirés"
+msgstr "Contributions sur reçus invalidés/retirés"
 
 msgid "Create campaign"
 msgstr "Créer la campagne"
@@ -256,82 +256,82 @@ msgid "DonRec Extra Configuration"
 msgstr "Configuration DonRec Extra"
 
 msgid "Donation Receipt"
-msgstr "Reçu de don"
+msgstr "Reçu fiscal"
 
 msgid "Donation Receipt Audit"
-msgstr "Audit de reçu de don"
+msgstr "Audit de reçu fiscal"
 
 msgid "Donation Receipt Audit Entries"
-msgstr "Entrées d'audit de reçus de dons"
+msgstr "Entrées d'audit de reçus fiscaux"
 
 msgid "Donation Receipt Audit Entry"
-msgstr "Entrée d'audit de reçu de don"
+msgstr "Entrée d'audit de reçu fiscal"
 
 msgid "Donation Receipt Audit Report"
-msgstr "Rapport d'audit de reçus de dons"
+msgstr "Rapport d'audit de reçus fiscaux"
 
 msgid "Donation Receipt Audit Reports"
-msgstr "Rapports d'audit de reçus de dons"
+msgstr "Rapports d'audit de reçus fiscaux"
 
 msgid "Donation Receipt Audits"
-msgstr "Audits de reçus de dons"
+msgstr "Audits de reçus fiscaux"
 
 msgid "Donation Receipt Event"
-msgstr "Événement de reçu de don"
+msgstr "Événement de reçu fiscal"
 
 msgid "Donation Receipt Events"
-msgstr "Événements de reçus de dons"
+msgstr "Événements de reçus fiscaux"
 
 msgid "Donation Receipt Item"
-msgstr "Ligne de reçu de don"
+msgstr "Ligne de reçu fiscal"
 
 msgid "Donation Receipt Item Audit"
-msgstr "Audit de ligne de reçu de don"
+msgstr "Audit de ligne de reçu fiscal"
 
 msgid "Donation Receipt Item Audits"
-msgstr "Audits de lignes de reçus de dons"
+msgstr "Audits de lignes de reçus fiscaux"
 
 msgid "Donation Receipt Items"
-msgstr "Lignes de reçus de dons"
+msgstr "Lignes de reçus fiscaux"
 
 msgid "Donation Receipts"
-msgstr "Reçus de dons"
+msgstr "Reçus fiscaux"
 
 msgid "Donation Receipts Extra"
 msgstr "Donation Receipts Extra"
 
 msgid "Donation receipt audit"
-msgstr "Audit de reçu de don"
+msgstr "Audit de reçu fiscal"
 
 msgid "Donation receipt audit report"
-msgstr "Rapport d'audit de reçu de don"
+msgstr "Rapport d'audit de reçu fiscal"
 
 msgid "Donation receipt campaign"
-msgstr "Campagne de reçus de dons"
+msgstr "Campagne de reçus fiscaux"
 
 msgid "Donation receipt campaigns"
-msgstr "Campagnes de reçus de dons"
+msgstr "Campagnes de reçus fiscaux"
 
 msgid "Donation receipt issued"
-msgstr "Reçu de don émis"
+msgstr "Reçu fiscal émis"
 
 msgid "Donation receipt queue job %1 was not found."
-msgstr "La tâche de file d'attente de reçu de don %1 est introuvable."
+msgstr "La tâche de file d'attente de reçu fiscal %1 est introuvable."
 
 msgid "Donation receipt run (%1 tasks)"
-msgstr "Exécution de reçus de dons (%1 tâches)"
+msgstr "Exécution de reçus fiscaux (%1 tâches)"
 
 msgid "Donation receipt unavailable"
-msgstr "Reçu de don indisponible"
+msgstr "Reçu fiscal indisponible"
 
 msgid "Done"
 msgstr "Terminé"
 
 msgid "Donrec Receipt ID"
-msgstr "ID du reçu Donrec"
+msgstr "Id. du reçu"
 
 msgid "Donrec Receipt Item ID"
-msgstr "ID de la ligne du reçu Donrec"
+msgstr "ID de la ligne du reçu fiscal"
 
 msgid "Donrec did not finish within the safety step limit."
 msgstr "Donrec ne s'est pas terminé dans la limite de sécurité d'étapes."
@@ -346,19 +346,19 @@ msgid "Donrec generation failed: %1"
 msgstr "La génération Donrec a échoué : %1"
 
 msgid "Donrec generation finished with status %1 for %2 contribution(s), using profile %3 for %4."
-msgstr "La génération Donrec s'est terminée avec le statut %1 pour %2 contribution(s), en utilisant le profil %3 pour %4."
+msgstr "La génération Donrec s'est terminée avec le statut %1 pour %2 contribution(s), en utilisant le modèle %3 pour %4."
 
 msgid "Donrec is unavailable or disabled."
 msgstr "Donrec est indisponible ou désactivé."
 
 msgid "Donrec profile"
-msgstr "Profil Donrec"
+msgstr "Modèle de reçu fiscal"
 
 msgid "Donrec profile ID"
-msgstr "ID du profil Donrec"
+msgstr "Id. du modèle"
 
 msgid "Donrec receipt ID"
-msgstr "ID du reçu Donrec"
+msgstr "Id. du reçu"
 
 msgid "Enable custom tokens Address"
 msgstr "Activer les tokens personnalisés Adresse"
@@ -403,7 +403,7 @@ msgid "Exporters"
 msgstr "Exportateurs"
 
 msgid "Extends Donation Receipts with portable tokens, headless generation, CiviRules automation, and receipt auditing."
-msgstr "Étend Donation Receipts avec des tokens portables, la génération autonome, l'automatisation CiviRules et l'audit des reçus."
+msgstr "Étend les reçus fiscaux Donrec avec des tokens portables, la génération autonome, l'automatisation CiviRules et l'audit des reçus."
 
 msgid "Financial Type ID"
 msgstr "ID du type financier"
@@ -421,13 +421,13 @@ msgid "Frozen audit report #%1 was created."
 msgstr "Le rapport d'audit gelé n°%1 a été créé."
 
 msgid "Frozen audit report snapshots for donation receipts."
-msgstr "Instantanes gelés de rapport d'audit pour les reçus de dons."
+msgstr "Instantanes gelés de rapport d'audit pour les reçus fiscaux."
 
 msgid "Generate Donrec receipt"
-msgstr "Générer un reçu Donrec"
+msgstr "Générer un reçu fiscal Donrec"
 
 msgid "Generate a receipt and %1 (individual profile: %2; organization profile: %3)."
-msgstr "Générer un reçu et %1 (profil individuel : %2 ; profil organisation : %3)."
+msgstr "Générer un reçu et %1 (modèle individuel : %2 ; modèle organisation : %3)."
 
 msgid "Granularity"
 msgstr "Granularité"
@@ -442,7 +442,7 @@ msgid "Immutable audit projection of Donrec tax receipts."
 msgstr "Projection d'audit immuable des reçus fiscaux Donrec."
 
 msgid "Individual Donrec profile"
-msgstr "Profil Donrec individuel"
+msgstr "Modèle de reçu fiscal individuel"
 
 msgid "Individuals"
 msgstr "Individus"
@@ -460,7 +460,7 @@ msgid "Issue a receipt for this contribution"
 msgstr "Émettre un reçu pour cette contribution"
 
 msgid "Issue donation receipt"
-msgstr "Émettre le reçu de don"
+msgstr "Émettre le reçu fiscal"
 
 msgid "Issue grouped receipt for contact %1"
 msgstr "Émettre un reçu groupé pour le contact %1"
@@ -490,7 +490,7 @@ msgid "Last contribution date"
 msgstr "Dernière date de contribution"
 
 msgid "Lifecycle events recorded for donation receipt audits."
-msgstr "Événements de cycle de vie enregistrés pour les audits de reçus de dons."
+msgstr "Événements de cycle de vie enregistrés pour les audits de reçus fiscaux."
 
 msgid "Location Type Address"
 msgstr "Adresse du type d'emplacement"
@@ -508,10 +508,10 @@ msgid "No Donrec export mode is available."
 msgstr "Aucun mode d'exportation Donrec n'est disponible."
 
 msgid "No Donrec profile is configured for contact type %1."
-msgstr "Aucun profil Donrec n'est configuré pour le type de contact %1."
+msgstr "Aucun modèle de reçu fiscal n'est configuré pour le type de contact %1."
 
 msgid "No active Donrec profile is available."
-msgstr "Aucun profil Donrec actif n'est disponible."
+msgstr "Aucun modèle de reçu fiscal actif n'est disponible."
 
 msgid "No completed EUR contribution remained eligible between %1 and the trigger boundary %2."
 msgstr "Aucune contribution terminée en EUR n'est restée éligible entre %1 et la limite du déclencheur %2."
@@ -520,7 +520,7 @@ msgid "No creator contact could be resolved for the Donrec run."
 msgstr "Aucun contact créateur n'a pu être résolu pour l'exécution Donrec."
 
 msgid "No donation receipt file is available for this contribution."
-msgstr "Aucun fichier de reçu de don n'est disponible pour cette contribution."
+msgstr "Aucun fichier de reçu fiscal n'est disponible pour cette contribution."
 
 msgid "No receipt could be issued because this contribution is no longer eligible."
 msgstr "Aucun reçu n'a pu être émis car cette contribution n'est plus éligible."
@@ -541,7 +541,7 @@ msgid "One withdrawal predates the audit ledger. Its displayed date is the recon
 msgstr "Un retrait est antérieur au registre d'audit. La date affichée est la date de rapprochement, et non la date de retrait légalement effective. Vérifiez cet enregistrement avant d'utiliser une coupure historique."
 
 msgid "Organization Donrec profile"
-msgstr "Profil Donrec organisation"
+msgstr "Modèle de reçu fiscal organisation"
 
 msgid "Organizations"
 msgstr "Organisations"
@@ -556,22 +556,22 @@ msgid "Period"
 msgstr "Période"
 
 msgid "Period From"
-msgstr "Période du"
+msgstr "Début de la période"
 
 msgid "Period To"
-msgstr "Période au"
+msgstr "Fin de la période"
 
 msgid "Period end"
-msgstr "Fin de période"
+msgstr "Fin de la période"
 
 msgid "Period from"
-msgstr "Période du"
+msgstr "Début de la période"
 
 msgid "Period start"
-msgstr "Début de période"
+msgstr "Début de la période"
 
 msgid "Period to"
-msgstr "Période au"
+msgstr "Fin de la période"
 
 msgid "Preview only — do not issue receipts"
 msgstr "Aperçu uniquement — ne pas émettre de reçus"
@@ -610,7 +610,7 @@ msgid "Receipt number"
 msgstr "Numéro de reçu"
 
 msgid "Receipt profile “%1” requires data which is missing. %2"
-msgstr "Le profil de reçu « %1 » nécessite des données manquantes. %2"
+msgstr "Le modèle de reçu fiscal « %1 » nécessite des données manquantes. %2"
 
 msgid "Receipt record ID"
 msgstr "ID de l'enregistrement de reçu"
@@ -622,7 +622,7 @@ msgid "Receipts issued"
 msgstr "Reçus émis"
 
 msgid "Receipts withdrawn"
-msgstr "Reçus retirés"
+msgstr "Reçus invalidés/retirés"
 
 msgid "Receive Date"
 msgstr "Date de réception"
@@ -697,13 +697,13 @@ msgid "The report start date must not be later than the end date."
 msgstr "La date de début du rapport ne doit pas être postérieure à la date de fin."
 
 msgid "The selected Donrec profile does not exist or is inactive."
-msgstr "Le profil Donrec sélectionné n'existe pas ou est inactif."
+msgstr "Le modèle de reçu fiscal sélectionné n'existe pas ou est inactif."
 
 msgid "The selected Donrec profile is unavailable."
-msgstr "Le profil Donrec sélectionné est indisponible."
+msgstr "Le modèle de reçu fiscal sélectionné est indisponible."
 
 msgid "The selected Donrec profile must store the original PDF."
-msgstr "Le profil Donrec sélectionné doit stocker le PDF original."
+msgstr "Le modèle de reçu fiscal sélectionné doit stocker le PDF original."
 
 msgid "The selected contributions overlap an open Donrec run: %1"
 msgstr "Les contributions sélectionnées chevauchent une exécution Donrec en cours : %1"
@@ -775,19 +775,19 @@ msgid "Valid receipts"
 msgstr "Reçus valides"
 
 msgid "Withdrawal time precision"
-msgstr "Précision de la date de retrait"
+msgstr "Précision de la date d'invalidation/retrait"
 
 msgid "Withdrawals included at this cutoff"
 msgstr "Retraits inclus à cette date de coupure"
 
 msgid "Withdrawn at"
-msgstr "Retiré le"
+msgstr "Retiré/invalidé le"
 
 msgid "Year"
 msgstr "Année"
 
 msgid "You do not have permission to access this donation receipt."
-msgstr "Vous n'avez pas la permission d'accéder à ce reçu de don."
+msgstr "Vous n'avez pas la permission d'accéder à ce reçu fiscal."
 
 msgid "create downloadable PDF"
 msgstr "créer un PDF téléchargeable"
