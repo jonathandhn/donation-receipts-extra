@@ -2,6 +2,24 @@
 
 All notable changes to Donation Receipts Extra are documented in this file.
 
+## 1.3.1 — 2026-08-04
+
+### Fixed
+
+* Use atomic `CREATE OR REPLACE VIEW` DDL in `DonrecExtraSqlViewTrait` for
+  `DonationReceipt`, `DonationReceiptItem`, and `DonationReceiptAudit` API4 entities.
+  This avoids the non-idempotent `DROP VIEW` / `CREATE VIEW` cycle in CiviCRM core's
+  `Generic\SqlView`, eliminating race condition errors (`Table already exists`) during
+  concurrent entity-type cache rebuilds, background workers, and deployment flushes.
+
+### Added
+
+* Full French localization (`fr_FR`) for all UI screens, SearchKit/Afform fields, API actions, and CiviRules triggers, harmonized with standard Donrec terminology.
+
+### Changed
+
+* Updated maintainer metadata, repository URLs, and original author attribution in `info.xml`.
+
 ## 1.3.0 — 2026-07-26
 
 ### Added
