@@ -14,12 +14,14 @@ use CRM_Donrecextra_ExtensionUtil as E;
  */
 class DonationReceiptAudit extends Generic\SqlView {
 
+  use DonrecExtraSqlViewTrait;
+
   /**
    * Avoid creating the view during the early extension-installation phase.
    *
-   * scan-classes may discover this service before the extension upgrader has
-   * executed auto_install.sql. A later cache rebuild creates the view once all
-   * source tables are available.
+   * scan-classes may discover this service before Entity Schema has created
+   * the audit tables. A later cache rebuild creates the view once all source
+   * tables are available.
    */
   public static function _on_civi_api4_entityTypes(\Civi\Core\Event\GenericHookEvent $event): void {
     foreach ([
@@ -31,7 +33,7 @@ class DonationReceiptAudit extends Generic\SqlView {
         return;
       }
     }
-    parent::_on_civi_api4_entityTypes($event);
+    static::rebuildSqlView();
   }
 
   public static function permissions(): array {

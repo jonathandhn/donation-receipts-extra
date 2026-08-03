@@ -19,6 +19,8 @@ use CRM_Donrecextra_ExtensionUtil as E;
  */
 class DonationReceipt extends Generic\SqlView {
 
+  use DonrecExtraSqlViewTrait;
+
   /**
    * Limit access to users who may view contributions.
    */
