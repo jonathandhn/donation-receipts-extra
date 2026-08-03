@@ -1,0 +1,809 @@
+# French translation for Donation Receipts Extra CiviCRM Extension.
+# Copyright (C) 2026 Jonathan Dahan
+# This file is distributed under the same license as the com.ixiam.modules.donrecextra package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.ixiam.modules.donrecextra 1.3.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-04 01:10+0200\n"
+"PO-Revision-Date: 2026-08-04 01:10+0200\n"
+"Last-Translator: Jonathan Dahan <jonathan@dhn.one>\n"
+"Language-Team: French <fr@li.org>\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "$contributor.city — City"
+msgstr "$contributor.city — Ville"
+
+msgid "$contributor.country — Country"
+msgstr "$contributor.country — Pays"
+
+msgid "$contributor.display_name — Display name"
+msgstr "$contributor.display_name — Nom affiché"
+
+msgid "$contributor.email — Email"
+msgstr "$contributor.email — Adresse e-mail"
+
+msgid "$contributor.first_name — First name"
+msgstr "$contributor.first_name — Prénom"
+
+msgid "$contributor.last_name — Last name"
+msgstr "$contributor.last_name — Nom de famille"
+
+msgid "$contributor.legal_name — Legal name"
+msgstr "$contributor.legal_name — Nom légal"
+
+msgid "$contributor.organization_name — Organization name"
+msgstr "$contributor.organization_name — Nom de l'organisation"
+
+msgid "$contributor.postal_code — Postal code"
+msgstr "$contributor.postal_code — Code postal"
+
+msgid "$contributor.street_address — Street address"
+msgstr "$contributor.street_address — Adresse (rue)"
+
+msgid "$contributor.supplemental_address_1 — Address supplement"
+msgstr "$contributor.supplemental_address_1 — Complément d'adresse"
+
+msgid "%1 must use the YYYY-MM-DD format."
+msgstr "%1 doit utiliser le format AAAA-MM-JJ."
+
+msgid "- Select a campaign -"
+msgstr "- Sélectionner une campagne -"
+
+msgid "- Select a saved search -"
+msgstr "- Sélectionner une recherche enregistrée -"
+
+msgid "A donation receipt was issued for contribution #%1."
+msgstr "Un reçu de don a été émis pour la contribution n°%1."
+
+msgid "A period is required for contact selection."
+msgstr "Une période est requise pour la sélection par contact."
+
+msgid "A period is required when the saved search returns contacts."
+msgstr "Une période est requise lorsque la recherche enregistrée renvoie des contacts."
+
+msgid "Action"
+msgstr "Action"
+
+msgid "Actor Contact ID"
+msgstr "ID du contact auteur"
+
+msgid "Amount"
+msgstr "Montant"
+
+msgid "Amount issued"
+msgstr "Montant émis"
+
+msgid "Amount withdrawn"
+msgstr "Montant retiré"
+
+msgid "An original donation receipt already exists for this contribution."
+msgstr "Un reçu de don original existe déjà pour cette contribution."
+
+msgid "Apply"
+msgstr "Appliquer"
+
+msgid "As Of"
+msgstr "Au"
+
+msgid "As of"
+msgstr "Au"
+
+msgid "At least one contact ID or contribution ID is required."
+msgstr "Au moins un ID de contact ou un ID de contribution est requis."
+
+msgid "At least one contact ID, contribution ID or saved search is required."
+msgstr "Au moins un ID de contact, un ID de contribution ou une recherche enregistrée est requis."
+
+msgid "At least one selected contribution no longer exists."
+msgstr "Au moins une contribution sélectionnée n'existe plus."
+
+msgid "Audit receipt ID"
+msgstr "ID d'audit du reçu"
+
+msgid "Audit report frozen"
+msgstr "Rapport d'audit gelé"
+
+msgid "Beneficiary ID"
+msgstr "ID du bénéficiaire"
+
+msgid "Beneficiary Type"
+msgstr "Type de bénéficiaire"
+
+msgid "Beneficiary type"
+msgstr "Type de bénéficiaire"
+
+msgid "Breakdown"
+msgstr "Ventilation"
+
+msgid "CRM_CivirulesActions_Form_Form"
+msgstr "CRM_CivirulesActions_Form_Form"
+
+msgid "CRM_Civirules_Action"
+msgstr "CRM_Civirules_Action"
+
+msgid "CRM_Civirules_Utils_Upgrader"
+msgstr "CRM_Civirules_Utils_Upgrader"
+
+msgid "Campaign #%1 was created with %2 task(s)."
+msgstr "La campagne n°%1 a été créée avec %2 tâche(s)."
+
+msgid "Campaign label"
+msgstr "Libellé de la campagne"
+
+msgid "Campaign processed. %1 task(s) remain ready."
+msgstr "Campagne traitée. %1 tâche(s) restent prêtes."
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Choose a saved SearchKit search."
+msgstr "Choisissez une recherche SearchKit enregistrée."
+
+msgid "Choose a selection mode."
+msgstr "Choisissez un mode de sélection."
+
+msgid "Choose an existing campaign to run."
+msgstr "Choisissez une campagne existante à exécuter."
+
+msgid "Choose the receipt tokens which must contain a value before a receipt using this Donrec profile can be issued. The check applies to the one-contribution form, CiviRules and API generation."
+msgstr "Choisissez les tokens de reçu qui doivent contenir une valeur avant qu'un reçu utilisant ce profil Donrec puisse être émis. La vérification s'applique au formulaire à contribution unique, à CiviRules et à la génération par API."
+
+msgid "Contact %1 is neither an Individual nor an Organization."
+msgstr "Le contact %1 n'est ni un individu ni une organisation."
+
+msgid "Contact %1: %2"
+msgstr "Contact %1 : %2"
+
+msgid "Contact ID"
+msgstr "ID du contact"
+
+msgid "Contact IDs"
+msgstr "IDs des contacts"
+
+msgid "Contacts in a period"
+msgstr "Contacts sur une période"
+
+msgid "Contribution %1 has no valid contact or contribution date."
+msgstr "La contribution %1 n'a pas de contact ou de date de contribution valide."
+
+msgid "Contribution Hash"
+msgstr "Hachage de la contribution"
+
+msgid "Contribution ID"
+msgstr "ID de la contribution"
+
+msgid "Contribution IDs"
+msgstr "IDs des contributions"
+
+msgid "Contribution allocations recorded on donation receipt audits."
+msgstr "Allocations de contribution enregistrées sur les audits de reçus de dons."
+
+msgid "Contribution amount"
+msgstr "Montant de la contribution"
+
+msgid "Contribution count"
+msgstr "Nombre de contributions"
+
+msgid "Contribution date"
+msgstr "Date de contribution"
+
+msgid "Contribution date (fiscal period)"
+msgstr "Date de contribution (période fiscale)"
+
+msgid "Contribution triggers generate one receipt for that payment. Activity triggers must be restricted to Target contacts and generate a year-to-request grouped receipt. Configure waiting periods and validation separately."
+msgstr "Les déclencheurs de contribution génèrent un reçu pour ce paiement. Les déclencheurs d'activité doivent être restreints aux contacts cibles et générer un reçu groupé annuel. Configurez les délais d'attente et la validation séparément."
+
+msgid "Contributions on issued receipts"
+msgstr "Contributions sur reçus émis"
+
+msgid "Contributions on valid receipts"
+msgstr "Contributions sur reçus valides"
+
+msgid "Contributions on withdrawn receipts"
+msgstr "Contributions sur reçus retirés"
+
+msgid "Create campaign"
+msgstr "Créer la campagne"
+
+msgid "Create downloadable PDF only"
+msgstr "Créer le PDF téléchargeable uniquement"
+
+msgid "Created At"
+msgstr "Créé le"
+
+msgid "Created By"
+msgstr "Créé par"
+
+msgid "Creates the legal-information fields for organizations and exposes stable receipt tokens. Disabled by default."
+msgstr "Crée les champs d'informations légales pour les organisations et expose des tokens de reçu stables. Désactivé par défaut."
+
+msgid "Currency"
+msgstr "Devise"
+
+msgid "Currency must be a three-letter ISO code."
+msgstr "La devise doit être un code ISO à trois lettres."
+
+msgid "Current Status"
+msgstr "Statut actuel"
+
+msgid "Current status"
+msgstr "Statut actuel"
+
+msgid "Custom field"
+msgstr "Champ personnalisé"
+
+msgid "Date basis"
+msgstr "Base de date"
+
+msgid "Day"
+msgstr "Jour"
+
+msgid "Deductible amount"
+msgstr "Montant déductible"
+
+msgid "Detected during reconciliation"
+msgstr "Détecté lors du rapprochement"
+
+msgid "Distinct beneficiaries"
+msgstr "Bénéficiaires distincts"
+
+msgid "DonRec Extra Configuration"
+msgstr "Configuration DonRec Extra"
+
+msgid "Donation Receipt"
+msgstr "Reçu de don"
+
+msgid "Donation Receipt Audit"
+msgstr "Audit de reçu de don"
+
+msgid "Donation Receipt Audit Entries"
+msgstr "Entrées d'audit de reçus de dons"
+
+msgid "Donation Receipt Audit Entry"
+msgstr "Entrée d'audit de reçu de don"
+
+msgid "Donation Receipt Audit Report"
+msgstr "Rapport d'audit de reçus de dons"
+
+msgid "Donation Receipt Audit Reports"
+msgstr "Rapports d'audit de reçus de dons"
+
+msgid "Donation Receipt Audits"
+msgstr "Audits de reçus de dons"
+
+msgid "Donation Receipt Event"
+msgstr "Événement de reçu de don"
+
+msgid "Donation Receipt Events"
+msgstr "Événements de reçus de dons"
+
+msgid "Donation Receipt Item"
+msgstr "Ligne de reçu de don"
+
+msgid "Donation Receipt Item Audit"
+msgstr "Audit de ligne de reçu de don"
+
+msgid "Donation Receipt Item Audits"
+msgstr "Audits de lignes de reçus de dons"
+
+msgid "Donation Receipt Items"
+msgstr "Lignes de reçus de dons"
+
+msgid "Donation Receipts"
+msgstr "Reçus de dons"
+
+msgid "Donation Receipts Extra"
+msgstr "Donation Receipts Extra"
+
+msgid "Donation receipt audit"
+msgstr "Audit de reçu de don"
+
+msgid "Donation receipt audit report"
+msgstr "Rapport d'audit de reçu de don"
+
+msgid "Donation receipt campaign"
+msgstr "Campagne de reçus de dons"
+
+msgid "Donation receipt campaigns"
+msgstr "Campagnes de reçus de dons"
+
+msgid "Donation receipt issued"
+msgstr "Reçu de don émis"
+
+msgid "Donation receipt queue job %1 was not found."
+msgstr "La tâche de file d'attente de reçu de don %1 est introuvable."
+
+msgid "Donation receipt run (%1 tasks)"
+msgstr "Exécution de reçus de dons (%1 tâches)"
+
+msgid "Donation receipt unavailable"
+msgstr "Reçu de don indisponible"
+
+msgid "Done"
+msgstr "Terminé"
+
+msgid "Donrec Receipt ID"
+msgstr "ID du reçu Donrec"
+
+msgid "Donrec Receipt Item ID"
+msgstr "ID de la ligne du reçu Donrec"
+
+msgid "Donrec did not finish within the safety step limit."
+msgstr "Donrec ne s'est pas terminé dans la limite de sécurité d'étapes."
+
+msgid "Donrec exporter class is unavailable: %1"
+msgstr "La classe d'exportateur Donrec est indisponible : %1"
+
+msgid "Donrec exporter requirements are not met."
+msgstr "Les prérequis de l'exportateur Donrec ne sont pas remplis."
+
+msgid "Donrec generation failed: %1"
+msgstr "La génération Donrec a échoué : %1"
+
+msgid "Donrec generation finished with status %1 for %2 contribution(s), using profile %3 for %4."
+msgstr "La génération Donrec s'est terminée avec le statut %1 pour %2 contribution(s), en utilisant le profil %3 pour %4."
+
+msgid "Donrec is unavailable or disabled."
+msgstr "Donrec est indisponible ou désactivé."
+
+msgid "Donrec profile"
+msgstr "Profil Donrec"
+
+msgid "Donrec profile ID"
+msgstr "ID du profil Donrec"
+
+msgid "Donrec receipt ID"
+msgstr "ID du reçu Donrec"
+
+msgid "Enable custom tokens Address"
+msgstr "Activer les tokens personnalisés Adresse"
+
+msgid "Enable custom tokens Contact"
+msgstr "Activer les tokens personnalisés Contact"
+
+msgid "Enable custom tokens Contribution"
+msgstr "Activer les tokens personnalisés Contribution"
+
+msgid "Enable organization receipt fields"
+msgstr "Activer les champs de reçu pour les organisations"
+
+msgid "Enter at least one contact ID."
+msgstr "Saisissez au moins un ID de contact."
+
+msgid "Enter at least one contribution ID."
+msgstr "Saisissez au moins un ID de contribution."
+
+msgid "Event Hash"
+msgstr "Hachage de l'événement"
+
+msgid "Event Type"
+msgstr "Type d'événement"
+
+msgid "Exact"
+msgstr "Exact"
+
+msgid "Existing campaign"
+msgstr "Campagne existante"
+
+msgid "Explicit contributions"
+msgstr "Contributions explicites"
+
+msgid "Export mode"
+msgstr "Mode d'exportation"
+
+msgid "Export modes"
+msgstr "Modes d'exportation"
+
+msgid "Exporters"
+msgstr "Exportateurs"
+
+msgid "Extends Donation Receipts with portable tokens, headless generation, CiviRules automation, and receipt auditing."
+msgstr "Étend Donation Receipts avec des tokens portables, la génération autonome, l'automatisation CiviRules et l'audit des reçus."
+
+msgid "Financial Type ID"
+msgstr "ID du type financier"
+
+msgid "First Seen At"
+msgstr "Première détection le"
+
+msgid "First contribution date"
+msgstr "Première date de contribution"
+
+msgid "Freeze this report when applying"
+msgstr "Geler ce rapport lors de l'application"
+
+msgid "Frozen audit report #%1 was created."
+msgstr "Le rapport d'audit gelé n°%1 a été créé."
+
+msgid "Frozen audit report snapshots for donation receipts."
+msgstr "Instantanes gelés de rapport d'audit pour les reçus de dons."
+
+msgid "Generate Donrec receipt"
+msgstr "Générer un reçu Donrec"
+
+msgid "Generate a receipt and %1 (individual profile: %2; organization profile: %3)."
+msgstr "Générer un reçu et %1 (profil individuel : %2 ; profil organisation : %3)."
+
+msgid "Granularity"
+msgstr "Granularité"
+
+msgid "Group contributions into one receipt per contact"
+msgstr "Grouper les contributions en un reçu par contact"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Immutable audit projection of Donrec tax receipts."
+msgstr "Projection d'audit immuable des reçus fiscaux Donrec."
+
+msgid "Individual Donrec profile"
+msgstr "Profil Donrec individuel"
+
+msgid "Individuals"
+msgstr "Individus"
+
+msgid "Invalid contribution receipt request."
+msgstr "Demande de reçu de contribution invalide."
+
+msgid "Invalid date and time for %1."
+msgstr "Date et heure invalides pour %1."
+
+msgid "Invalid date for %1."
+msgstr "Date invalide pour %1."
+
+msgid "Issue a receipt for this contribution"
+msgstr "Émettre un reçu pour cette contribution"
+
+msgid "Issue donation receipt"
+msgstr "Émettre le reçu de don"
+
+msgid "Issue grouped receipt for contact %1"
+msgstr "Émettre un reçu groupé pour le contact %1"
+
+msgid "Issue receipt"
+msgstr "Émettre le reçu"
+
+msgid "Issue receipt for contribution %1"
+msgstr "Émettre un reçu pour la contribution %1"
+
+msgid "Issue receipt(s) for contact %1"
+msgstr "Émettre un ou des reçus pour le contact %1"
+
+msgid "Issued At"
+msgstr "Émis le"
+
+msgid "Issued at"
+msgstr "Émis le"
+
+msgid "Issued on"
+msgstr "Émis le"
+
+msgid "LEGAL INFORMATION"
+msgstr "INFORMATIONS LÉGALES"
+
+msgid "Last contribution date"
+msgstr "Dernière date de contribution"
+
+msgid "Lifecycle events recorded for donation receipt audits."
+msgstr "Événements de cycle de vie enregistrés pour les audits de reçus de dons."
+
+msgid "Location Type Address"
+msgstr "Adresse du type d'emplacement"
+
+msgid "Metadata"
+msgstr "Métadonnées"
+
+msgid "Metrics JSON"
+msgstr "JSON de métriques"
+
+msgid "Month"
+msgstr "Mois"
+
+msgid "No Donrec export mode is available."
+msgstr "Aucun mode d'exportation Donrec n'est disponible."
+
+msgid "No Donrec profile is configured for contact type %1."
+msgstr "Aucun profil Donrec n'est configuré pour le type de contact %1."
+
+msgid "No active Donrec profile is available."
+msgstr "Aucun profil Donrec actif n'est disponible."
+
+msgid "No completed EUR contribution remained eligible between %1 and the trigger boundary %2."
+msgstr "Aucune contribution terminée en EUR n'est restée éligible entre %1 et la limite du déclencheur %2."
+
+msgid "No creator contact could be resolved for the Donrec run."
+msgstr "Aucun contact créateur n'a pu être résolu pour l'exécution Donrec."
+
+msgid "No donation receipt file is available for this contribution."
+msgstr "Aucun fichier de reçu de don n'est disponible pour cette contribution."
+
+msgid "No receipt could be issued because this contribution is no longer eligible."
+msgstr "Aucun reçu n'a pu être émis car cette contribution n'est plus éligible."
+
+msgid "No withdrawals are included for this period and cutoff."
+msgstr "Aucun retrait n'est inclus pour cette période et cette date de coupure."
+
+msgid "Non-deductible Amount"
+msgstr "Montant non déductible"
+
+msgid "Non-deductible amount"
+msgstr "Montant non déductible"
+
+msgid "Occurred At"
+msgstr "Survenu le"
+
+msgid "One withdrawal predates the audit ledger. Its displayed date is the reconciliation date, not the legally effective withdrawal date. Verify this record before using a historical cutoff."
+msgstr "Un retrait est antérieur au registre d'audit. La date affichée est la date de rapprochement, et non la date de retrait légalement effective. Vérifiez cet enregistrement avant d'utiliser une coupure historique."
+
+msgid "Organization Donrec profile"
+msgstr "Profil Donrec organisation"
+
+msgid "Organizations"
+msgstr "Organisations"
+
+msgid "Original File ID"
+msgstr "ID du fichier original"
+
+msgid "PDF SHA-256"
+msgstr "SHA-256 du PDF"
+
+msgid "Period"
+msgstr "Période"
+
+msgid "Period From"
+msgstr "Période du"
+
+msgid "Period To"
+msgstr "Période au"
+
+msgid "Period end"
+msgstr "Fin de période"
+
+msgid "Period from"
+msgstr "Période du"
+
+msgid "Period start"
+msgstr "Début de période"
+
+msgid "Period to"
+msgstr "Période au"
+
+msgid "Preview only — do not issue receipts"
+msgstr "Aperçu uniquement — ne pas émettre de reçus"
+
+msgid "Print report"
+msgstr "Imprimer le rapport"
+
+msgid "Reason"
+msgstr "Raison"
+
+msgid "Receipt Audit ID"
+msgstr "ID d'audit du reçu"
+
+msgid "Receipt Number"
+msgstr "Numéro de reçu"
+
+msgid "Receipt Type"
+msgstr "Type de reçu"
+
+msgid "Receipt already issued"
+msgstr "Reçu déjà émis"
+
+msgid "Receipt delivery"
+msgstr "Envoi du reçu"
+
+msgid "Receipt issue date"
+msgstr "Date d'émission du reçu"
+
+msgid "Receipt item ID"
+msgstr "ID de la ligne de reçu"
+
+msgid "Receipt item count"
+msgstr "Nombre de lignes du reçu"
+
+msgid "Receipt number"
+msgstr "Numéro de reçu"
+
+msgid "Receipt profile “%1” requires data which is missing. %2"
+msgstr "Le profil de reçu « %1 » nécessite des données manquantes. %2"
+
+msgid "Receipt record ID"
+msgstr "ID de l'enregistrement de reçu"
+
+msgid "Receipt type"
+msgstr "Type de reçu"
+
+msgid "Receipts issued"
+msgstr "Reçus émis"
+
+msgid "Receipts withdrawn"
+msgstr "Reçus retirés"
+
+msgid "Receive Date"
+msgstr "Date de réception"
+
+msgid "Recipient city"
+msgstr "Ville du destinataire"
+
+msgid "Recipient country"
+msgstr "Pays du destinataire"
+
+msgid "Recipient name"
+msgstr "Nom du destinataire"
+
+msgid "Recipient postal code"
+msgstr "Code postal du destinataire"
+
+msgid "Recipient street address"
+msgstr "Adresse du destinataire"
+
+msgid "Recorded At"
+msgstr "Enregistré le"
+
+msgid "Reporting basis"
+msgstr "Base de rapport"
+
+msgid "Reporting period"
+msgstr "Période de rapport"
+
+msgid "Required receipt data — %1"
+msgstr "Données de reçu requises — %1"
+
+msgid "Run or resume selected campaign (10 tasks)"
+msgstr "Exécuter ou reprendre la campagne sélectionnée (10 tâches)"
+
+msgid "Save"
+msgstr "Enregistrer"
+
+msgid "Saved SearchKit search"
+msgstr "Recherche SearchKit enregistrée"
+
+msgid "Saved search"
+msgstr "Recherche enregistrée"
+
+msgid "Selection"
+msgstr "Sélection"
+
+msgid "Selection Hash"
+msgstr "Hachage de la sélection"
+
+msgid "Selection SHA-256"
+msgstr "SHA-256 de la sélection"
+
+msgid "Send PDF using the Donrec email exporter"
+msgstr "Envoyer le PDF via l'exportateur e-mail Donrec"
+
+msgid "Source"
+msgstr "Source"
+
+msgid "Status"
+msgstr "Statut"
+
+msgid "Submit"
+msgstr "Soumettre"
+
+msgid "The CiviRules trigger did not provide a contact ID."
+msgstr "Le déclencheur CiviRules n'a pas fourni d'ID de contact."
+
+msgid "The Completed contribution status could not be resolved."
+msgstr "Le statut de contribution « Terminé » n'a pas pu être résolu."
+
+msgid "The report start date must not be later than the end date."
+msgstr "La date de début du rapport ne doit pas être postérieure à la date de fin."
+
+msgid "The selected Donrec profile does not exist or is inactive."
+msgstr "Le profil Donrec sélectionné n'existe pas ou est inactif."
+
+msgid "The selected Donrec profile is unavailable."
+msgstr "Le profil Donrec sélectionné est indisponible."
+
+msgid "The selected Donrec profile must store the original PDF."
+msgstr "Le profil Donrec sélectionné doit stocker le PDF original."
+
+msgid "The selected contributions overlap an open Donrec run: %1"
+msgstr "Les contributions sélectionnées chevauchent une exécution Donrec en cours : %1"
+
+msgid "The selected export mode is unavailable."
+msgstr "Le mode d'exportation sélectionné est indisponible."
+
+msgid "The selected required tokens need “Enable custom tokens Contact” to be enabled in Donation Receipts Extra settings."
+msgstr "Les tokens requis sélectionnés nécessitent l'activation de « Activer les tokens personnalisés Contact » dans les paramètres de Donation Receipts Extra."
+
+msgid "The selected saved search must search Contacts or Contributions."
+msgstr "La recherche enregistrée sélectionnée doit rechercher des Contacts ou des Contributions."
+
+msgid "The selected saved search returned no Contacts or Contributions."
+msgstr "La recherche enregistrée sélectionnée n'a retourné aucun Contact ni aucune Contribution."
+
+msgid "The start date must not be later than the end date."
+msgstr "La date de début ne doit pas être postérieure à la date de fin."
+
+msgid "Time Precision"
+msgstr "Précision de la date"
+
+msgid "Time precision"
+msgstr "Précision de la date"
+
+msgid "Timezone"
+msgstr "Fuseau horaire"
+
+msgid "Total Amount"
+msgstr "Montant total"
+
+msgid "Total amount"
+msgstr "Montant total"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Unable to determine the original receipt request date."
+msgstr "Impossible de déterminer la date de demande initiale du reçu."
+
+msgid "Unable to determine the triggering contribution date."
+msgstr "Impossible de déterminer la date de la contribution déclenchante."
+
+msgid "Unknown Donrec exporter: %1"
+msgstr "Exportateur Donrec inconnu : %1"
+
+msgid "Unknown beneficiary type"
+msgstr "Type de bénéficiaire inconnu"
+
+msgid "Unsupported report date basis."
+msgstr "Base de date de rapport non prise en charge."
+
+msgid "Unsupported report granularity."
+msgstr "Granularité de rapport non prise en charge."
+
+msgid "Updated At"
+msgstr "Mis à jour le"
+
+msgid "Use contact IDs or contribution IDs, not both."
+msgstr "Utilisez des IDs de contact ou des IDs de contribution, pas les deux."
+
+msgid "Use contact IDs, contribution IDs or a saved search, not a combination."
+msgstr "Utilisez des IDs de contact, des IDs de contribution ou une recherche enregistrée, pas une combinaison."
+
+msgid "Valid amount"
+msgstr "Montant valide"
+
+msgid "Valid receipts"
+msgstr "Reçus valides"
+
+msgid "Withdrawal time precision"
+msgstr "Précision de la date de retrait"
+
+msgid "Withdrawals included at this cutoff"
+msgstr "Retraits inclus à cette date de coupure"
+
+msgid "Withdrawn at"
+msgstr "Retiré le"
+
+msgid "Year"
+msgstr "Année"
+
+msgid "You do not have permission to access this donation receipt."
+msgstr "Vous n'avez pas la permission d'accéder à ce reçu de don."
+
+msgid "create downloadable PDF"
+msgstr "créer un PDF téléchargeable"
+
+msgid "dateFrom and dateTo must use the YYYY-MM-DD format when using contact IDs."
+msgstr "dateFrom et dateTo doivent utiliser le format AAAA-MM-JJ lors de l'utilisation d'IDs de contact."
+
+msgid "domain"
+msgstr "domaine"
+
+msgid "primary address"
+msgstr "adresse principale"
+
+msgid "ready"
+msgstr "prêt"
+
+msgid "send PDF by email"
+msgstr "envoyer le PDF par e-mail"
+
