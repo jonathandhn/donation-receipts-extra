@@ -14,6 +14,9 @@ All notable changes to Donation Receipts Extra are documented in this file.
 * Replace direct static property access `CRM_Donrec_Logic_ReceiptItem::$_custom_fields`
   with public getter `CRM_Donrec_Logic_ReceiptItem::getCustomFields()`, avoiding fatal errors
   if Donrec restricts property visibility to `private`/`protected`.
+* Initialize typed properties in API4 custom actions (`Generate`, `QueueStatus`, `Summary`)
+  with default values, preventing `MagicGetterSetterTrait` infinite recursion during
+  `cv flush` under PHP 8.0+.
 
 ### Added
 

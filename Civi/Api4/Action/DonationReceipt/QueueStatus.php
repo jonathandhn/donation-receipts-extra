@@ -16,7 +16,7 @@ class QueueStatus extends AbstractAction {
    * @var int
    * @required
    */
-  protected int $userJobId;
+  protected int $userJobId = 0;
 
   public function _run(Result $result): void {
     $result->append((new \CRM_Donrecextra_ReceiptQueue())->status($this->userJobId));

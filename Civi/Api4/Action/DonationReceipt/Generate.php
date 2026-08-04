@@ -30,7 +30,7 @@ class Generate extends AbstractAction {
    * @var string
    * @required
    */
-  protected string $dateFrom;
+  protected string $dateFrom = '';
 
   /**
    * Last eligible contribution date, inclusive.
@@ -38,7 +38,7 @@ class Generate extends AbstractAction {
    * @var string
    * @required
    */
-  protected string $dateTo;
+  protected string $dateTo = '';
 
   /**
    * Donrec profile ID. Uses the active default profile when omitted.

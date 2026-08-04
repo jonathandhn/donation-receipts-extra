@@ -8,13 +8,13 @@ use Civi\Api4\Generic\Result;
 class Summary extends AbstractAction {
 
   /** @required */
-  protected string $periodFrom;
+  protected string $periodFrom = '';
 
   /** @required */
-  protected string $periodTo;
+  protected string $periodTo = '';
 
   /** @required */
-  protected string $asOf;
+  protected string $asOf = '';
 
   protected string $granularity = 'month';
 
