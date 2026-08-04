@@ -36,5 +36,5 @@
     <psr0 prefix="CRM_" path="."/>
     <psr4 prefix="Civi\" path="Civi"/>
   </classloader>
-  <upgrader>CiviMix\Schema\Donrecextra\AutomaticUpgrader</upgrader>
+  <upgrader>CRM_Donrecextra_Upgrader</upgrader>
 </extension>
