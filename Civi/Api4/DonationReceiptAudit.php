@@ -24,6 +24,9 @@ class DonationReceiptAudit extends Generic\SqlView {
    * tables are available.
    */
   public static function _on_civi_api4_entityTypes(\Civi\Core\Event\GenericHookEvent $event): void {
+    if (\CRM_Core_Config::isInitializing()) {
+      return;
+    }
     foreach ([
       'civicrm_donrecextra_receipt_audit',
       'civicrm_donrecextra_receipt_event',
@@ -33,7 +36,12 @@ class DonationReceiptAudit extends Generic\SqlView {
         return;
       }
     }
-    static::rebuildSqlView();
+    try {
+      static::rebuildSqlView();
+    }
+    catch (\Throwable $e) {
+      // Ignore view creation errors during early container initialization
+    }
   }
 
   public static function permissions(): array {

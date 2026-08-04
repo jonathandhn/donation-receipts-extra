@@ -15,7 +15,15 @@ trait DonrecExtraSqlViewTrait {
    * @internal
    */
   public static function _on_civi_api4_entityTypes(GenericHookEvent $event): void {
-    static::rebuildSqlView();
+    if (\CRM_Core_Config::isInitializing()) {
+      return;
+    }
+    try {
+      static::rebuildSqlView();
+    }
+    catch (\Throwable $e) {
+      // Ignore view creation errors during early container initialization
+    }
   }
 
   /**
