@@ -26,7 +26,10 @@ class CRM_Donrecextra_ExtensionUtil {
    */
   public static function ts($text, $params = []): string {
     if (!array_key_exists('domain', $params)) {
-      $params['domain'] = [self::LONG_NAME, NULL];
+      $params['domain'] = self::LONG_NAME;
+    }
+    elseif (is_array($params['domain'])) {
+      $params['domain'] = $params['domain'][0] ?? self::LONG_NAME;
     }
     return ts($text, $params);
   }
