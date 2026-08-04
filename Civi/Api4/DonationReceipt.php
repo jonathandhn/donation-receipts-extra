@@ -81,8 +81,7 @@ class DonationReceipt extends Generic\SqlView {
     $receiptTable = CRM_Donrec_DataStructure::getTableName('zwb_donation_receipt');
     $receiptFields = CRM_Donrec_DataStructure::getCustomFields('zwb_donation_receipt');
     $itemTable = CRM_Donrec_DataStructure::getTableName('zwb_donation_receipt_item');
-    CRM_Donrec_Logic_ReceiptItem::getCustomFields();
-    $itemFields = CRM_Donrec_Logic_ReceiptItem::$_custom_fields;
+    $itemFields = CRM_Donrec_Logic_ReceiptItem::getCustomFields() ?? [];
 
     $issuedIn = self::identifier($itemFields['issued_in']);
     $totalAmount = self::identifier($itemFields['total_amount']);

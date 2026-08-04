@@ -38,8 +38,7 @@ class DonationReceiptItem extends Generic\SqlView {
    */
   protected static function viewSelect(): array {
     $receiptFields = CRM_Donrec_DataStructure::getCustomFields('zwb_donation_receipt');
-    CRM_Donrec_Logic_ReceiptItem::getCustomFields();
-    $itemFields = CRM_Donrec_Logic_ReceiptItem::$_custom_fields;
+    $itemFields = CRM_Donrec_Logic_ReceiptItem::getCustomFields() ?? [];
 
     return [
       self::field('item.id', 'id', 'Integer', E::ts('Receipt item ID')),
@@ -78,8 +77,7 @@ class DonationReceiptItem extends Generic\SqlView {
     $receiptTable = CRM_Donrec_DataStructure::getTableName('zwb_donation_receipt');
     $receiptFields = CRM_Donrec_DataStructure::getCustomFields('zwb_donation_receipt');
     $itemTable = CRM_Donrec_DataStructure::getTableName('zwb_donation_receipt_item');
-    CRM_Donrec_Logic_ReceiptItem::getCustomFields();
-    $itemFields = CRM_Donrec_Logic_ReceiptItem::$_custom_fields;
+    $itemFields = CRM_Donrec_Logic_ReceiptItem::getCustomFields() ?? [];
 
     return sprintf(
       'FROM `%s` item

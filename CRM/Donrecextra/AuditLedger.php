@@ -259,12 +259,11 @@ class CRM_Donrecextra_AuditLedger {
   }
 
   private function getDonrecStructure(): array {
-    CRM_Donrec_Logic_ReceiptItem::getCustomFields();
     return [
       'receipt_table' => CRM_Donrec_DataStructure::getTableName('zwb_donation_receipt'),
       'item_table' => CRM_Donrec_DataStructure::getTableName('zwb_donation_receipt_item'),
       'receipt' => CRM_Donrec_DataStructure::getCustomFields('zwb_donation_receipt'),
-      'item' => CRM_Donrec_Logic_ReceiptItem::$_custom_fields,
+      'item' => CRM_Donrec_Logic_ReceiptItem::getCustomFields() ?? [],
     ];
   }
 

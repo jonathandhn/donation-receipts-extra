@@ -266,8 +266,7 @@ class CRM_Donrecextra_ReceiptGenerator {
     if (!$contributionIds) {
       return [];
     }
-    CRM_Donrec_Logic_ReceiptItem::getCustomFields();
-    $fields = CRM_Donrec_Logic_ReceiptItem::$_custom_fields;
+    $fields = CRM_Donrec_Logic_ReceiptItem::getCustomFields() ?? [];
     $table = CRM_Donrec_DataStructure::getTableName('zwb_donation_receipt_item');
     $ids = implode(',', array_map('intval', $contributionIds));
     $issuedIn = $fields['issued_in'];
