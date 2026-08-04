@@ -77,4 +77,10 @@ class CRM_Donrecextra_Upgrader extends CRM_Extension_Upgrader_Base {
     return TRUE;
   }
 
+  public function upgrade_4204() {
+    $this->ctx->log->info('Ensuring audit ledger database tables exist');
+    (new CRM_Donrecextra_AuditLedger())->ensureTablesExist();
+    return TRUE;
+  }
+
 }

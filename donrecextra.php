@@ -35,6 +35,9 @@ function donrecextra_civicrm_install() {
 function donrecextra_civicrm_enable() {
   _donrecextra_civix_civicrm_enable();
   donrecextra_register_civirules_actions();
+  if (class_exists('CRM_Donrecextra_AuditLedger')) {
+    (new CRM_Donrecextra_AuditLedger())->ensureTablesExist();
+  }
 }
 
 /**
