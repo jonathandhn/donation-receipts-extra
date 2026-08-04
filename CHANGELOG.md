@@ -12,6 +12,7 @@ All notable changes to Donation Receipts Extra are documented in this file.
   `Generic\SqlView`, eliminating race condition errors (`Table already exists`) during
   concurrent entity-type cache rebuilds, background workers, and deployment flushes.
 * Add container initialization check (`\CRM_Core_Config::isInitializing()`) and try-catch guard in `_on_civi_api4_entityTypes`, preventing container service recursion (`Civi.php` line 51) during early cache flushes.
+* Auto-provision audit ledger database tables (`civicrm_donrecextra_receipt_audit`, etc.) if missing during receipt withdrawal, reconciliation, or upgrades.
 * Replace direct static property access `CRM_Donrec_Logic_ReceiptItem::$_custom_fields`
   with public getter `CRM_Donrec_Logic_ReceiptItem::getCustomFields()`, avoiding fatal errors
   if Donrec restricts property visibility to `private`/`protected`.

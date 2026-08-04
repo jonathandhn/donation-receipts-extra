@@ -14,7 +14,16 @@ class CRM_Donrecextra_AuditLedger {
     });
   }
 
+  public function ensureTablesExist(): void {
+    if (!CRM_Core_DAO::checkTableExists('civicrm_donrecextra_receipt_audit')) {
+      if (function_exists('_donrecextra_civix_schema')) {
+        _donrecextra_civix_schema()->updateDatabase();
+      }
+    }
+  }
+
   private function doReconcileAll(): array {
+    $this->ensureTablesExist();
     $structure = $this->getDonrecStructure();
     $receiptTable = $structure['receipt_table'];
     $receiptNumber = $structure['receipt']['receipt_id'];
@@ -61,6 +70,7 @@ class CRM_Donrecextra_AuditLedger {
   }
 
   private function doReconcileReceipt(int $receiptId, ?DateTimeInterface $eventTime, string $source): array {
+    $this->ensureTablesExist();
     $receipt = $this->loadReceipt($receiptId);
     if (!$receipt || !$receipt['is_original_record']) {
       return [];

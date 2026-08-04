@@ -31,7 +31,9 @@ class CRM_Donrecextra_Upgrader extends CRM_Extension_Upgrader_Base {
 
   public function upgrade_4202() {
     $this->ctx->log->info('Creating the donation receipt audit ledger');
-    $this->executeSqlFile('sql/auto_install.sql');
+    if (function_exists('_donrecextra_civix_schema')) {
+      _donrecextra_civix_schema()->updateDatabase();
+    }
     return TRUE;
   }
 
