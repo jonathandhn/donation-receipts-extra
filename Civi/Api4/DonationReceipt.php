@@ -81,8 +81,9 @@ class DonationReceipt extends Generic\SqlView {
     $receiptTable = CRM_Donrec_DataStructure::getTableName('zwb_donation_receipt');
     $receiptFields = CRM_Donrec_DataStructure::getCustomFields('zwb_donation_receipt');
     $itemTable = CRM_Donrec_DataStructure::getTableName('zwb_donation_receipt_item');
+    $itemFields = CRM_Donrec_Logic_ReceiptItem::getCustomFields() ?? [];
     if (empty($receiptTable) || empty($receiptFields) || empty($itemTable) || empty($itemFields['issued_in']) || empty($itemFields['total_amount']) || empty($itemFields['currency']) || empty($itemFields['receive_date'])) {
-      throw new \CRM_Core_Exception('Donrec custom fields or tables are not initialized yet.');
+      return 'FROM (SELECT id, id AS entity_id FROM civicrm_contact) receipt WHERE 1=0';
     }
 
     $issuedIn = self::identifier($itemFields['issued_in']);
