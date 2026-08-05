@@ -350,10 +350,15 @@ class CRM_Donrecextra_ReceiptQueue {
       throw new CRM_Core_Exception(E::ts('The selected saved search must search Contacts or Contributions.'));
     }
     $apiParams = (array) ($savedSearch['api_params'] ?? []);
-    // A receipt campaign always needs the complete frozen result. Do not
-    // inherit a SearchKit display pager, its selected columns or ACL bypass.
-    unset($apiParams['limit'], $apiParams['offset'], $apiParams['orderBy'], $apiParams['checkPermissions']);
-    $apiParams['select'] = ['id'];
+    // A receipt campaign needs the complete frozen result, but it must retain
+    // SearchKit's selected expressions: a HAVING clause may refer to a select
+    // alias such as Contact.contact_type:label. The queue itself retains only
+    // the resulting contribution IDs below.
+    unset($apiParams['limit'], $apiParams['offset'], $apiParams['checkPermissions']);
+    $apiParams['select'] = array_values(array_unique(array_merge(
+      (array) ($apiParams['select'] ?? []),
+      ['id']
+    )));
     $apiParams['checkPermissions'] = TRUE;
     $result = civicrm_api4($savedSearch['api_entity'], 'get', $apiParams);
     $ids = $this->normalizeIds(array_column($result->getArrayCopy(), 'id'));
