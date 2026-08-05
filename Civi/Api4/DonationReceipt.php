@@ -82,7 +82,7 @@ class DonationReceipt extends Generic\SqlView {
     $receiptFields = CRM_Donrec_DataStructure::getCustomFields('zwb_donation_receipt');
     $itemTable = CRM_Donrec_DataStructure::getTableName('zwb_donation_receipt_item');
     if (empty($receiptTable) || empty($receiptFields) || empty($itemTable) || empty($itemFields['issued_in']) || empty($itemFields['total_amount']) || empty($itemFields['non_deductible_amount']) || empty($itemFields['currency']) || empty($itemFields['receive_date'])) {
-      return 'FROM civicrm_contact receipt WHERE 1=0';
+      return 'FROM (SELECT 1 AS id, 1 AS entity_id) receipt WHERE 1=0';
     }
 
     $issuedIn = self::identifier($itemFields['issued_in']);
