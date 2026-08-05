@@ -2,8 +2,7 @@
 
 namespace Civi\Api4;
 
-use CRM_Donrec_DataStructure;
-use CRM_Donrec_Logic_ReceiptItem;
+use CRM_Donrecextra_DonrecMetadata;
 use CRM_Donrecextra_ExtensionUtil as E;
 
 /**
@@ -41,7 +40,7 @@ class DonationReceipt extends Generic\SqlView {
    * {@inheritDoc}
    */
   protected static function viewSelect(): array {
-    $receiptFields = CRM_Donrec_DataStructure::getCustomFields('zwb_donation_receipt');
+    $receiptFields = CRM_Donrecextra_DonrecMetadata::getCustomFields('zwb_donation_receipt');
 
     return [
       self::field('receipt.id', 'id', 'Integer', E::ts('Receipt record ID')),
@@ -78,12 +77,18 @@ class DonationReceipt extends Generic\SqlView {
    * {@inheritDoc}
    */
   protected static function viewFrom(): string {
-    $receiptTable = CRM_Donrec_DataStructure::getTableName('zwb_donation_receipt');
-    $receiptFields = CRM_Donrec_DataStructure::getCustomFields('zwb_donation_receipt');
-    $itemTable = CRM_Donrec_DataStructure::getTableName('zwb_donation_receipt_item');
-    $itemFields = CRM_Donrec_Logic_ReceiptItem::getCustomFields() ?? [];
+    $receiptTable = CRM_Donrecextra_DonrecMetadata::getTableName('zwb_donation_receipt');
+    $receiptFields = CRM_Donrecextra_DonrecMetadata::getCustomFields('zwb_donation_receipt');
+    $itemTable = CRM_Donrecextra_DonrecMetadata::getTableName('zwb_donation_receipt_item');
+    $itemFields = CRM_Donrecextra_DonrecMetadata::getCustomFields('zwb_donation_receipt_item');
     if (empty($receiptTable) || empty($receiptFields) || empty($itemTable) || empty($itemFields['issued_in']) || empty($itemFields['total_amount']) || empty($itemFields['currency']) || empty($itemFields['receive_date'])) {
-      return 'FROM (SELECT id, id AS entity_id FROM civicrm_contact) receipt WHERE 1=0';
+      return 'FROM (SELECT NULL AS id, NULL AS entity_id) receipt
+        LEFT JOIN (SELECT NULL AS uri, NULL AS mime_type) receipt_file ON 1 = 0
+        LEFT JOIN (SELECT NULL AS item_count, NULL AS contribution_count,
+                          NULL AS total_amount, NULL AS non_deductible_amount,
+                          NULL AS currency, NULL AS first_receive_date,
+                          NULL AS last_receive_date) items ON 1 = 0
+        WHERE 1 = 0';
     }
 
     $issuedIn = self::identifier($itemFields['issued_in']);

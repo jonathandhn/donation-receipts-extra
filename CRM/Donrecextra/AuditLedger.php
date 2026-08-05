@@ -360,10 +360,10 @@ class CRM_Donrecextra_AuditLedger {
 
   private function getDonrecStructure(): array {
     return [
-      'receipt_table' => CRM_Donrec_DataStructure::getTableName('zwb_donation_receipt'),
-      'item_table' => CRM_Donrec_DataStructure::getTableName('zwb_donation_receipt_item'),
-      'receipt' => CRM_Donrec_DataStructure::getCustomFields('zwb_donation_receipt'),
-      'item' => CRM_Donrec_Logic_ReceiptItem::getCustomFields() ?? [],
+      'receipt_table' => CRM_Donrecextra_DonrecMetadata::getTableName('zwb_donation_receipt'),
+      'item_table' => CRM_Donrecextra_DonrecMetadata::getTableName('zwb_donation_receipt_item'),
+      'receipt' => CRM_Donrecextra_DonrecMetadata::getCustomFields('zwb_donation_receipt'),
+      'item' => CRM_Donrecextra_DonrecMetadata::getCustomFields('zwb_donation_receipt_item'),
     ];
   }
 

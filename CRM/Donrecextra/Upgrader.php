@@ -57,8 +57,8 @@ class CRM_Donrecextra_Upgrader extends CRM_Extension_Upgrader_Base {
          ADD UNIQUE KEY `UI_donrecextra_receipt_item` (`receipt_audit_id`, `donrec_receipt_item_id`)"
       );
     }
-    $itemFields = CRM_Donrec_Logic_ReceiptItem::getCustomFields() ?? [];
-    $itemTable = CRM_Donrec_DataStructure::getTableName('zwb_donation_receipt_item');
+    $itemFields = CRM_Donrecextra_DonrecMetadata::getCustomFields('zwb_donation_receipt_item');
+    $itemTable = CRM_Donrecextra_DonrecMetadata::getTableName('zwb_donation_receipt_item');
     $issuedIn = $itemFields['issued_in'] ?? NULL;
     CRM_Core_DAO::executeQuery(
       "UPDATE civicrm_donrecextra_receipt_item_audit audit_item

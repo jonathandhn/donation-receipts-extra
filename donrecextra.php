@@ -230,7 +230,7 @@ function donrecextra_civicrm_donationReceiptTokenValues(&$values) {
   // do not use isset(), which produces PHP 8 warnings for optional fields.
   // Supplying NULL defaults preserves Donrec's fallback behaviour while
   // keeping headless and cron runs quiet.
-  $receiptFields = CRM_Donrec_DataStructure::getCustomFields('zwb_donation_receipt');
+  $receiptFields = CRM_Donrecextra_DonrecMetadata::getCustomFields('zwb_donation_receipt');
   foreach (array_keys($receiptFields) as $tokenName) {
     if (str_starts_with($tokenName, 'shipping_')) {
       $addressToken = substr($tokenName, strlen('shipping_'));

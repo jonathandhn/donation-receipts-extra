@@ -15,7 +15,7 @@ trait DonrecExtraSqlViewTrait {
    * @internal
    */
   public static function _on_civi_api4_entityTypes(GenericHookEvent $event): void {
-    parent::_on_civi_api4_entityTypes($event);
+    static::rebuildSqlView();
   }
 
   /**
