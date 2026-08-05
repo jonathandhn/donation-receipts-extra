@@ -24,6 +24,7 @@ class DonationReceiptAudit extends Generic\SqlView {
    * tables are available.
    */
   public static function _on_civi_api4_entityTypes(\Civi\Core\Event\GenericHookEvent $event): void {
+    parent::_on_civi_api4_entityTypes($event);
     foreach ([
       'civicrm_donrecextra_receipt_audit',
       'civicrm_donrecextra_receipt_event',

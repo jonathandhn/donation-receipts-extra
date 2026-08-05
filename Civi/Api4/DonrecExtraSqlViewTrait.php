@@ -15,11 +15,14 @@ trait DonrecExtraSqlViewTrait {
    * @internal
    */
   public static function _on_civi_api4_entityTypes(GenericHookEvent $event): void {
+    parent::_on_civi_api4_entityTypes($event);
     try {
       static::rebuildSqlView();
     }
     catch (\Throwable $e) {
-      // Ignore view creation errors during early container initialization or cache flush
+      if (class_exists('Civi') && method_exists('Civi', 'log')) {
+        \Civi::log()->debug('DonrecExtraSqlViewTrait: rebuildSqlView failed: ' . $e->getMessage());
+      }
     }
   }
 
